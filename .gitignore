@@ -2,3 +2,4 @@ node_modules
 site
 src/_includes/css/*.scss
 src/_includes/css/*.css.map
+.env
