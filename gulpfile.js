@@ -48,7 +48,7 @@ gulp.task('js', function() {
     .pipe(uglify())
     .pipe(rename({ suffix: ".min" }))
     // Output
-    .pipe(gulp.dest("./src/_includes/js"))
+    .pipe(gulp.dest("./src/_includes/js/min"))
 });
 
 

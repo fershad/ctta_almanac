@@ -1,5 +1,3 @@
-# My Eleventy Starter
+# Chinese Taipei Touch Association Almanac
 
-## Usage
-1. Clone repo
-2. Run `npm install` to install 11ty & gulp dependencies
+An almanac website built for Chinese Taipei Touch Association. Back-end powered by Sanity.io.
