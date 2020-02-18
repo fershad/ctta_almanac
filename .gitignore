@@ -3,3 +3,4 @@ site
 src/_includes/css/*.scss
 src/_includes/css/*.css.map
 .env
+sanity/node_modules
