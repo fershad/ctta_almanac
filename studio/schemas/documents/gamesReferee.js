@@ -1,6 +1,6 @@
 export default {
     name: `gamesReferee`,
-    title: `Games - Referees`,
+    title: `👨‍⚖️ Games - Referees`,
     type: `document`,
     fields: [
         {
@@ -8,25 +8,64 @@ export default {
             title: `Event`,
             type: `reference`,
             required: true,
-            to: [{ type: `event` }]
+            to: [{ type: `event` }],
+            validation: Rule => Rule.required()
         },
         {
-            name: `homeTeam`,
-            title: `Home Team`,
-            type: `localeString`,
-            required: true,
-        },
-        {
-            name: `awayTeam`,
-            title: `Away Team`,
-            type: `localeString`,
-            required: true,
-        },
+          name: `gameDate`,
+          title: `Match Date`,
+          type: `date`,
+          required: true,
+          validation: Rule => Rule.required()
+      },
+      {
+        name: `homeTeam`,
+        title: `Home Team`,
+        type: `object`,
+        
+        fields: [
+            {
+                name: `name`,
+                title: `Team Name`,
+                type: `localeString`,
+                required: true,
+            },
+            {
+                name: `score`,
+                title: `Score`,
+                type: `number`,
+                required: true,
+                validation: Rule => Rule.required().integer().positive().error('Should be a whole number greater than or equal to 0.')
+            },
+        ]
+    },
+    {
+      name: `awayTeam`,
+      title: `Away Team`,
+      type: `object`,
+      
+      fields: [
+          {
+              name: `name`,
+              title: `Team Name`,
+              type: `localeString`,
+              required: true,
+          },
+          {
+              name: `score`,
+              title: `Score`,
+              type: `number`,
+              required: true,
+              validation: Rule => Rule.required().integer().positive().error('Should be a whole number greater than or equal to 0.')
+          },
+      ]
+  },
         {
             name: `division`,
             title: `Division`,
             type: `localeString`,
             required: true,
+            validation: Rule => Rule.required()
         },
         {
             name: `referee`,
@@ -41,13 +80,14 @@ export default {
                   }
             }],
             required: true,
+            validation: Rule => Rule.required()
         },
     ],
     preview: {
       select: {
         division: 'division.en',
-        home: 'homeTeam.en',
-        away: 'awayTeam.en',
+        home: 'homeTeam.name.en',
+        away: 'awayTeam.name.en',
         media: 'event.image',
         event: 'event.name.en',
       },

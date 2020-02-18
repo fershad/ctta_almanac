@@ -1,6 +1,6 @@
 export default {
     name: `gamesTeam`,
-    title: `Games - Team`,
+    title: `🏉 Games - Team`,
     type: `document`,
     fields: [
         {
@@ -8,7 +8,8 @@ export default {
             title: `Event`,
             type: `reference`,
             required: true,
-            to: [{ type: `event` }]
+            to: [{ type: `event` }],
+            validation: Rule => Rule.required()
         },
         {
             name: `division`,
@@ -16,21 +17,21 @@ export default {
             type: `reference`,
             to: [{ type: `division`}],
             required: true,
-            
+            validation: Rule => Rule.required()
         },
         {
             name: `gameDate`,
             title: `Match Date`,
             type: `date`,
             required: true,
-            
+            validation: Rule => Rule.required()
         },
         {
             name: `taipeiScore`,
             title: `Chinese Taipei Score`,
             type: `number`,
             required: true,
-            validation: Rule => Rule.integer().positive().error('Should be a whole number greater than or equal to 0.'),
+            validation: Rule => Rule.required().integer().positive().error('Should be a whole number greater than or equal to 0.'),
             
         },
         {
@@ -50,7 +51,7 @@ export default {
                     title: `Opponent Score`,
                     type: `number`,
                     required: true,
-                    validation: Rule => Rule.integer().positive().error('Should be a whole number greater than or equal to 0.')
+                    validation: Rule => Rule.required().integer().positive().error('Should be a whole number greater than or equal to 0.')
                 },
             ]
         },
@@ -65,7 +66,7 @@ export default {
                 }
             ],
             required: false,
-            
+            validation: Rule => Rule.unique()
         },
         {
             name: `coaches`,

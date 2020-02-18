@@ -22,7 +22,8 @@ export default {
                 options: {
                     dateFormat: `YYYY`
                 }
-            }]
+            }],
+            validation: Rule => Rule.required()
         },
     ],
     preview: {

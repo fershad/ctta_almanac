@@ -13,6 +13,7 @@ export default {
             title: `Name`,
             type: `localeString`,
             required: true,
+            validation: Rule => Rule.required()
         },
         {
             name: `image`,
@@ -20,14 +21,14 @@ export default {
             type: `image`,
             options: { hotspot: false },
             description: `Recommended image size: 300x300 pixels.`,
-            required: true,
-            fieldset: 'details'
+            fieldset: 'details',
         },
         {
             name: `type`,
             title: `Event Type`,
             type: `string`,
             required: true,
+            validation: Rule => Rule.required(),
             options: {
                 list: [
                     { title: "Tournament", value: "tournament"},
@@ -47,6 +48,7 @@ export default {
                 dateFormat: `YYYY`
             },
             required: true,
+            validation: Rule => Rule.required(),
             fieldset: 'details'
         },
         {
@@ -54,13 +56,27 @@ export default {
             title: `Location`,
             type: `localeString`,
             required: true,
+            validation: Rule => Rule.required(),
             fieldset: 'details'
+        },
+        {
+            name: `support`,
+            title: `CTTA Support`,
+            type: `array`,
+            of: [{ 
+                type: `reference`,
+                to: [{ type: `person` }],
+                options: {
+                    filter: '$role in role',
+                    filterParams: {role: 'support'}
+                  }
+            }],
         },
     ],
     preview: {
         select: {
           title: 'name.en',
-          media: 'logo',
+          media: 'image',
           year: 'year'
         },
         prepare ({title = 'No title', media, year}) {

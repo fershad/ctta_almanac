@@ -36,7 +36,8 @@ export default {
               }
             ],
             editModal: `popover`,
-            required: true
+            required: true,
+            validation: Rule => Rule.required()
         },
         {
           name: `division`,
@@ -57,8 +58,13 @@ export default {
           return {
             title,
             media,
-            subtitle: role ? role && role.join(', ') : 'Missing role'
+            subtitle: role ? role && capitalize(role.join(', ')) : 'Missing role'
           }
         }
       }
+}
+
+const capitalize = (s) => {
+  if (typeof s !== 'string') return ''
+  return s.charAt(0).toUpperCase() + s.slice(1)
 }

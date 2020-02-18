@@ -1,10 +1,11 @@
 {
   "root": true,
-  "project": {
-    "name": "ctta-almanac"
-  },
   "api": {
     "projectId": "nxypgfqb",
+    "dataset": "production"
+  },
+  "project": {
+    "name": "CTTA Almanac"
   },
   "plugins": [
     "@sanity/base",
@@ -18,10 +19,9 @@
       "plugins": [
         "@sanity/vision"
       ],
-      "api": "development"
-    },
-    "production": {
-      "api": "production"
+      "api": {
+        "dataset": "development"
+      }
     }
   },
   "parts": [
