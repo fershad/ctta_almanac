@@ -96,3 +96,14 @@ body, html {
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
 }
+
+#stats-holder {
+    grid-template-areas: 'players'
+                         'coaches'
+                         'referees'
+                         'support';
+}
+
+#players-stats {
+
+}

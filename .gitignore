@@ -1,6 +1,5 @@
 node_modules
 site
-src/_includes/css/*.scss
-src/_includes/css/*.css.map
+src/_includes/css/
 .env
 sanity/node_modules
