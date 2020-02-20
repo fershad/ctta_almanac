@@ -54,5 +54,6 @@ gulp.task('js', function() {
 
 gulp.task('watch', function() {
   gulp.watch("./src/_includes/scss/*.scss", gulp.series('css'));
+  gulp.watch("./src/_includes/scss/variables/*.scss", gulp.series('css'));
   gulp.watch("./src/_includes/js/*.js", gulp.series('js'));
 });

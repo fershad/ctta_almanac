@@ -2,7 +2,7 @@
   "root": true,
   "api": {
     "projectId": "nxypgfqb",
-    "dataset": "production"
+    "dataset": "development"
   },
   "project": {
     "name": "CTTA Almanac"
@@ -21,6 +21,11 @@
       ],
       "api": {
         "dataset": "development"
+      }
+    },
+    "production": {
+      "api": {
+        "dataset": "production"
       }
     }
   },

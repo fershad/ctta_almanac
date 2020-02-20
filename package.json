@@ -4,18 +4,28 @@
   "description": "Basic starter suitable for most of my personal projects built using 11ty.",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx eleventy",
+    "watch": "npx eleventy --watch",
+    "dev": "npm run watch",
+    "now-build": "npm run build",
+    "debug": "DEBUG=* npx eleventy",
+    "postbuild": "gulp css js"
   },
   "author": "Fershad Digital Ltd.",
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^0.10.0",
-    "dot-env": "0.0.1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-clean-css": "^4.2.0",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.0.2",
-    "gulp-uglify": "^3.0.2"
+    "gulp-uglify": "^3.0.2",
+    "@sanity/image-url": "^0.140.17",
+    "groq": "^0.144.0",
+    "@sanity/client": "^0.144.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0"
   }
 }

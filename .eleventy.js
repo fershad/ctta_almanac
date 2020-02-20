@@ -7,6 +7,9 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/utils");
 
     // eleventyConfig.addFilter("addZone", require("./filters/zone.js") );
+    eleventyConfig.setLiquidOptions({
+      dynamicPartials: true
+    });
 
     return {
       dir: {
@@ -14,6 +17,7 @@ module.exports = function(eleventyConfig) {
           output: "site",
           data: "_data",
           includes: "_includes",
+          layouts: "_includes/layouts",
           addPassThroughCopy: true
       }
     };

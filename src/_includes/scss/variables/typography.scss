@@ -1,0 +1,266 @@
+@import 'colors';
+
+$text-color: $main-text-color;
+$quiet-color: $quiet-text-color;
+$loud-color: $accent-color;
+$heading-color: $text-color;
+
+$link-color: $accent-color;
+$link-hover-color: saturate($accent-color, 20%);
+$link-visited-color: $accent-color;
+
+
+$base-font-family: 'Nato Sans TC',Helvetica,Arial,"STHeiti",华文黑体,"Microsoft YaHei",微软雅黑,"SimSun",宋体,"WenQuanYi Micro Hei",sans-serif;
+$base-font-size: 16px;
+$base-font-weight: 400;
+
+$fixed-font-family: monospace;
+$fixed-font-size: 15px;
+$fixed-line-height: 1.2;
+
+$heading-font-family: 'Lato',
+sans-serif;
+$heading-font-weight: 400;
+
+
+/*
+ * Base styles
+ */
+
+body {
+    color: $text-color;
+    font-size: $base-font-size;
+    font-family: $base-font-family;
+    font-weight: $base-font-weight;
+    line-height: 1.6;
+    font-display: swap;
+}
+
+
+/*
+ * Typography
+ */
+
+.link {
+    color: $link-color;
+    text-decoration: underline;
+    font-weight: 700;
+    cursor: pointer;
+
+    &:visited {
+        color: $link-color;
+    }
+
+    &:hover,
+    &:visited:hover {
+        color: $link-hover-color;
+        text-decoration: none;
+    }
+}
+
+.fixed {
+    font-family: $fixed-font-family;
+    font-size: $fixed-font-size;
+    line-height: $fixed-line-height;
+}
+
+.quiet {
+    color: $quiet-color;
+}
+
+.loud {
+    color: $loud-color;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: 900;
+}
+
+.small {
+    font-size: 0.8em;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: $heading-font-family;
+    font-weight: $heading-font-weight;
+}
+
+.h1,
+.h2 {
+    line-height: 1.1;
+}
+
+.h3,
+.h4 {
+    line-height: 1.3;
+}
+
+.h1 {
+    font-size: 3.052em;
+    letter-spacing: -2px;
+    margin-top: 0;
+}
+
+.h2 {
+    font-size: 2.441em;
+    letter-spacing: -1px;
+}
+
+.h3 {
+    font-size: 1.953em;
+}
+
+.h4 {
+    font-size: 1.563em;
+}
+
+.h5 {
+    font-size: 1.25em;
+}
+
+.h6 {
+    font-size: 1em;
+}
+
+.block-margins {
+    margin: 1em 0;
+}
+
+.unordered-list {
+    list-style-type: disc;
+}
+
+.ordered-list {
+    list-style: decimal;
+}
+
+.typography {
+    a {
+        @extend .link;
+    }
+
+    i,
+    em {
+        @extend .italic;
+    }
+
+    b,
+    strong {
+        @extend .bold;
+    }
+
+    h1,
+    .h1 {
+        @extend .h1;
+        margin: 1em 0 0.5em;
+    }
+
+    h2,
+    .h2 {
+        @extend .h2;
+        margin: 1em 0 0.5em;
+    }
+
+    h3,
+    .h3 {
+        @extend .h3;
+        margin: 1em 0 0.5em;
+    }
+
+    h4,
+    .h4 {
+        @extend .h4;
+        margin: 1em 0 0.5em;
+    }
+
+    h5,
+    .h5 {
+        @extend .h5;
+        margin: 1em 0 0.5em;
+    }
+
+    h6,
+    .h6 {
+        @extend .h6;
+        margin: 1em 0 0.5em;
+    }
+
+    p,
+    ul,
+    ol,
+    pre {
+        @extend .block-margins;
+    }
+
+    ul {
+        @extend .unordered-list;
+    }
+
+    ol {
+        @extend .ordered-list;
+    }
+
+    pre,
+    code {
+        @extend .fixed;
+    }
+}
+
+
+/*
+ * Modifiers
+ */
+
+.float-left {
+    float: left;
+    margin-right: 1em;
+}
+
+.float-right {
+    float: right;
+    margin-left: 1em;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+
+/*
+ * Object definitions
+ */
+
+.content {
+    margin: 0 auto;
+    width: 32em;
+}
+
+.header-block {
+    font-size: 110%;
+
+    &.typography h1 {
+        font-size: 450%;
+    }
+}
+
+.author-block {
+    border-top: 3px double $quiet-color;
+    margin-top: 4em;
+}
