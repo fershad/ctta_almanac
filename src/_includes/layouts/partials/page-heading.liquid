@@ -1,4 +1,25 @@
 <div class="center">
+    <!-- Site title from Sanity -->
     <h1 class="h1 loud">{{ site.title[locale]}}</h1>
-    <p class="small">ENG | 中文</p>
+
+    <!-- Language Selector -->
+    <!-- TODO: Will need to bring in TranslationKey once subpages are created. -->
+    <ul class="small" id="lang-selector">
+        {% if locale == 'en' %}
+            <li class="loud bold">English</li>
+            <span class="h5">/</span>
+            <li><a href="/tw" class="link">中文版</a></li>
+        {% else %}
+            <li><a href="/en" class="link">English</a></li>
+            <span class="h5">/</span>
+            <li class="loud bold">中文版</li>
+        {% endif %}        
+    </ul>
+
+    <!-- Menu data from Sanity -->
+    <ul id="menu">
+        {% for m in site.menu[locale] %}
+        <li class="menu-link {% if m == site.menu[locale][0] %}active{% endif %}">{{ m }}</li>
+        {% endfor %}
+    </ul>
 </div>

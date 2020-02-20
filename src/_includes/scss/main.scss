@@ -2,6 +2,17 @@
 @import 'variables/colors';
 @import 'variables/typography';
 
+:root {
+    --menu-width: 280px;
+}
+
+// Mixins
+@mixin unstyled-list {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
 body, html {
     background-color: $page-background;
     width: 100vw;
@@ -20,4 +31,68 @@ body, html {
 
 .center {
     text-align: center;
+}
+
+.grid {
+    display: grid;
+}
+
+#page-heading {
+    margin-top: 2rem;
+}
+
+#lang-selector, #menu {
+    @include unstyled-list();
+}
+
+#lang-selector li {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0.25rem;
+    justify-content: space-around;
+    position: relative;
+}
+
+#lang-selector li:last-of-type {
+    margin-right: 0;
+}
+
+#menu {
+    margin: 1.5rem auto;
+    max-width: var(--menu-width);
+    width: 100%;
+    display: inline-flex;
+}
+
+#menu li {
+    display: inline-block;
+    padding: 0.5rem;
+}
+
+#menu .menu-link {
+    max-width: calc(var(--menu-width)/3);
+    width: 100%;
+    border: 1px solid $accent-color;
+    cursor: pointer;
+}
+
+#menu .menu-link.active {
+    background-color: $accent-color;
+    color: $page-background;
+}
+
+#menu .menu-link:not(:last-of-type) {
+    border-right: none;
+}
+
+#menu .menu-link:first-of-type {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+#menu .menu-link:last-of-type {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
 }

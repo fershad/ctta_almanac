@@ -5,12 +5,11 @@ $quiet-color: $quiet-text-color;
 $loud-color: $accent-color;
 $heading-color: $text-color;
 
-$link-color: $accent-color;
-$link-hover-color: saturate($accent-color, 20%);
-$link-visited-color: $accent-color;
+$link-color: $link-color;
+$link-hover-color: saturate($link-color, 20%);
+$link-visited-color: $link-color;
 
-
-$base-font-family: 'Nato Sans TC',Helvetica,Arial,"STHeiti",华文黑体,"Microsoft YaHei",微软雅黑,"SimSun",宋体,"WenQuanYi Micro Hei",sans-serif;
+$base-font-family: 'Noto Sans TC',Helvetica,Arial,"STHeiti",华文黑体,"Microsoft YaHei",微软雅黑,"SimSun",宋体,"WenQuanYi Micro Hei",sans-serif;
 $base-font-size: 16px;
 $base-font-weight: 400;
 
@@ -18,8 +17,7 @@ $fixed-font-family: monospace;
 $fixed-font-size: 15px;
 $fixed-line-height: 1.2;
 
-$heading-font-family: 'Lato',
-sans-serif;
+$heading-font-family: $base-font-family;
 $heading-font-weight: 400;
 
 

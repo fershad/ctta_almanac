@@ -6,6 +6,9 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/_includes/js/min/*.min.js");
     eleventyConfig.addPassthroughCopy("src/utils");
 
+    // Give shortnames to layouts
+    eleventyConfig.addLayoutAlias('index', 'index.liquid');
+
     // eleventyConfig.addFilter("addZone", require("./filters/zone.js") );
     eleventyConfig.setLiquidOptions({
       dynamicPartials: true
