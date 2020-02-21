@@ -1,0 +1,19 @@
+<div class="container" id="support-stats">
+    <h2 class="h2">Support Personel</h2>
+    <table class="stats-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Events</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for person in support %}
+                <tr>
+                    <td>{{ person.name[locale] }}</td>
+                    <td>{{ person.eventCount }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

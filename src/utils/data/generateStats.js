@@ -3,6 +3,7 @@ const getMatchStats = (id, matches) => {
     let assists = 0
     let periodOfTimes = 0
     let sendOffs = 0
+    let stats
   
     matches.forEach(match => {
         match.players.forEach(player => {
@@ -25,7 +26,15 @@ const getMatchStats = (id, matches) => {
            }
         });
     });
-    return [touchdowns, assists, periodOfTimes, sendOffs]
+
+    stats = {
+        "touchdowns": touchdowns,
+        "assists": assists,
+        "pot": periodOfTimes,
+        "sendoff": sendOffs
+    }
+
+    return stats
   }
 
   module.exports = getMatchStats

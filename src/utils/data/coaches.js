@@ -5,7 +5,7 @@ const countMatches = require('./countMatches')
 function generateCoaches (data) {
     return {
       ...data,
-      countMatches: countMatches(data.matches),
+      matchCount: countMatches(data.matches),
     }
   }
   
@@ -13,6 +13,7 @@ function generateCoaches (data) {
     const filter = groq`*[_type == "person" && !(_id in path("drafts.**")) && "coach" in role]`
     const projection = groq`{
       ...,
+      'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
       "matches": *[_type == "gamesTeam" && references(^._id)]{
           ...
       }

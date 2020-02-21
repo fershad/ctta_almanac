@@ -5,7 +5,7 @@ const countMatches = require('./countMatches')
 function generateSupport (data) {
     return {
       ...data,
-      countEvents: data.events.length,
+      eventCount: data.events.length,
     }
   }
   
@@ -13,6 +13,7 @@ function generateSupport (data) {
     const filter = groq`*[_type == "person" && !(_id in path("drafts.**")) && "support" in role]`
     const projection = groq`{
       ...,
+      'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
       "events": *[_type == "event" && references(^._id)]{
           ...
       },

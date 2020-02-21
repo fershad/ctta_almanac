@@ -1,0 +1,19 @@
+<div class="container" id="ref-stats">
+    <h2 class="h2">Referees</h2>
+    <table class="stats-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Matches</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ref in referees %}
+                <tr>
+                    <td>{{ ref.name[locale] }}</td>
+                    <td>{{ ref.matchCount }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

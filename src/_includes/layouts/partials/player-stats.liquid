@@ -1,5 +1,27 @@
-<div class="container" id="players-stats">
-    {% for player in players %}
-        {{player.matches}}
-    {% endfor %}
+<div class="container" id="player-stats">
+    <h2 class="h2">Players</h2>
+    <table class="stats-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Matches</th>
+                <th>Touchdowns</th>
+                <th>Assists*</th>
+                <th>Period of Time</th>
+                <th>Send Off</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in players %}
+                <tr>
+                    <td>{{ player.name[locale] }}</td>
+                    <td>{{ player.matchCount }}</td>
+                    <td>{{ player.matchStats.touchdowns }}</td>
+                    <td>{{ player.matchStats.assists }}</td> 
+                    <td>{{ player.matchStats.pot }}</td>
+                    <td>{{ player.matchStats.sendoff }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>

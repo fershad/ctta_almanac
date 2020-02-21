@@ -16,6 +16,7 @@
 body, html {
     background-color: $page-background;
     width: 100vw;
+    overflow-x: hidden;
 }
 
 .container {
@@ -104,6 +105,42 @@ body, html {
                          'support';
 }
 
-#players-stats {
+#player-stats {
+    grid-area: players;
+    overflow-x: auto;
+}
 
+#ref-stats {
+    grid-area: referees;
+}
+
+.stats-table {
+
+  border-collapse: collapse; 
+
+    thead {
+        background-color: $table-header-color;
+        color: $table-header-text-color;
+    }
+
+    thead > tr > th,
+    tbody > tr > td {
+        padding: initial 10px;
+    }
+
+    tbody > tr > td:not(:first-child) {
+        text-align: right;
+    }
+
+    tbody > tr:nth-child(odd) {
+        background-color: $table-row-odd-color;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: $table-row-even-color;
+    }
+
+    tbody > tr > td {
+        padding: 5px 10px;
+    }
 }

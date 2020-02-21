@@ -6,7 +6,7 @@ const getMatchStats = require('./generateStats')
 function generatePlayer (data) {
     return {
       ...data,
-      countMatches: countMatches(data.matches),
+      matchCount: countMatches(data.matches),
       matchStats: getMatchStats(data._id, data.matches)
     }
   }
@@ -15,6 +15,7 @@ function generatePlayer (data) {
     const filter = groq`*[_type == "person" && !(_id in path("drafts.**")) && "player" in role]`
     const projection = groq`{
       ...,
+      'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
       "matches": *[_type == "gamesTeam" && references(^._id)]{
           ...
       }
