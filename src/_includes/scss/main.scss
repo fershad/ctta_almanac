@@ -119,17 +119,20 @@ html {
 
 /* Variables
 ================================== */
-$bw: 3px; // border width
+$bw: 1.5px; // border width
 
 /* Tables
 ================================== */
 .data-table {
   margin: 0 0 3em 0;
   padding: 0;
-  display: block;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  grid-column-gap: 1.2em;
+  column-gap: 1.2em;
 }
 
-.player-data {
+.data {
   margin-bottom: 1em;
   display: grid;
   grid-template-columns: 60% 40%;
@@ -141,7 +144,7 @@ $bw: 3px; // border width
     "header stat";
 }
 
-.player-name {
+.name {
   grid-area: name;
   background-color: $page-background;
 }
@@ -168,7 +171,7 @@ $bw: 3px; // border width
   box-sizing: border-box;
   flex-grow: 1;
   width: 100%; // Default to full width
-  padding: 0.8em 1.2em;
+  padding: 0.8em 1em;
   overflow: hidden; // Or flex might break
   list-style: none;
   border: solid $bw white;
@@ -176,32 +179,37 @@ $bw: 3px; // border width
 
 @media all and (max-width: 767px) {
 
-    .data-table-cell.player-name {
+    .data-table-cell.name {
         border: none;
         font-size: 1.25em;
-        padding: .4em 1.2em 0.4em $bw;
+        padding: .4em 1em 0.4em $bw;
     }
 
-    .player-name .link, .player-name a {
-        color: $accent-color;
-    text-decoration: underline;
-    font-weight: 700;
-    cursor: pointer;
+    // .name .link, .name a {
+    //     color: $accent-color;
+    // text-decoration: underline;
+    // font-weight: 700;
+    // cursor: pointer;
 
-    &:visited {
-        color: $accent-color;
-    }
+    // &:visited {
+    //     color: $accent-color;
+    // }
 
-    &:hover,
-    &:visited:hover {
-        color: $accent-color;
-        text-decoration: none;
-    }
-    }
+    // &:hover,
+    // &:visited:hover {
+    //     color: $accent-color;
+    //     text-decoration: none;
+    // }
+    // }
 }
 
 @media all and (min-width: 768px) {
-  .player-data,
+
+  .data-table {
+    display: block;
+  }
+
+  .data,
   .data-table-heading,
   .data-table-row {
     display: flex;
@@ -212,25 +220,25 @@ $bw: 3px; // border width
       text-align: center;
   }
 
-  .player-data {
+  .data {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-areas: ". header" "name stat";
     margin-bottom: 0;
   }
 
-  .player-data:not(:first-of-type) > .data-table-heading {
+  .data:not(:first-of-type) > .data-table-heading {
     display: none;
   }
 
-  .data-table .player-data:nth-of-type(odd) {
-      .player-name, .data-table-row {
+  .data-table .data:nth-of-type(odd) {
+      .name, .data-table-row {
         background-color: $table-row-odd-color;
       }
   }
 
-  .data-table .player-data:nth-of-type(even) {
-    .player-name, .data-table-row {
+  .data-table .data:nth-of-type(even) {
+    .name, .data-table-row {
       background-color: $table-row-even-color;
     }
 }

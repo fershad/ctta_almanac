@@ -1,15 +1,15 @@
 <div class="container" id="player-stats">
-    <h2 class="h2">Players</h2>
+    <h2 class="h2 loud">Players</h2>
 
-    <div class="data-table 4-col">
+    <div class="data-table">
         {% for player in players %}
-        <div class="player-data">
+        <div class="data">
                 <div class="data-table-heading">
                     <div class="data-table-cell">Matches</div>
                     <div class="data-table-cell">Touchdowns</div>
                     <div class="data-table-cell">Assists*</div>
                 </div>
-                <div class="data-table-cell player-name"><a href="#" class="link">{{ player.name[locale] }}</a></div>
+                <div class="data-table-cell name"><a href="#" class="link">{{ player.name[locale] }}</a></div>
                 <div class="data-table-row">
                     <div class="data-table-cell">{{ player.matchCount }}</div>
                     <div class="data-table-cell">{{ player.matchStats.touchdowns }}</div>

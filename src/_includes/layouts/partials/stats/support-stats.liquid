@@ -1,0 +1,16 @@
+<div class="container" id="support-stats">
+    <h2 class="h2 loud">Support Personel</h2>
+    <div class="data-table">
+        {% for person in support %}
+        <div class="data">
+                <div class="data-table-heading">
+                    <div class="data-table-cell">Events</div>
+                </div>
+                <div class="data-table-cell name"><a href="#" class="link">{{ person.name[locale] }}</a></div>
+                <div class="data-table-row">
+                    <div class="data-table-cell">{{ person.eventCount }}</div>
+                </div>
+            </div>
+            {% endfor %}
+    </div>
+</div>
