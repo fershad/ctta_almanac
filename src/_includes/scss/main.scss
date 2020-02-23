@@ -1,146 +1,241 @@
-@import 'variables/reset';
-@import 'variables/colors';
-@import 'variables/typography';
+@import "variables/reset";
+@import "variables/colors";
+@import "variables/typography";
 
 :root {
-    --menu-width: 280px;
+  --menu-width: 280px;
 }
 
 // Mixins
 @mixin unstyled-list {
-    list-style: none;
-    text-align: center;
-    padding: 0;
+  list-style: none;
+  text-align: center;
+  padding: 0;
 }
 
-body, html {
-    background-color: $page-background;
-    width: 100vw;
-    overflow-x: hidden;
+body,
+html {
+  background-color: $page-background;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 .container {
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 24px;
-    padding-right: 24px;
-    width: 100%;
-    box-sizing: border-box;
-    height: 100%;
-    max-width: 1280px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 100%;
+  max-width: 1280px;
 }
 
 .center {
-    text-align: center;
+  text-align: center;
 }
 
 .grid {
-    display: grid;
+  display: grid;
 }
 
 #page-heading {
-    margin-top: 2rem;
+  margin-top: 2rem;
 }
 
-#lang-selector, #menu {
-    @include unstyled-list();
+#lang-selector,
+#menu {
+  @include unstyled-list();
 }
 
 #lang-selector li {
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: 0 0.25rem;
-    justify-content: space-around;
-    position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0.25rem;
+  justify-content: space-around;
+  position: relative;
 }
 
 #lang-selector li:last-of-type {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 #menu {
-    margin: 1.5rem auto;
-    max-width: var(--menu-width);
-    width: 100%;
-    display: inline-flex;
+  margin: 1.5rem auto;
+  max-width: var(--menu-width);
+  width: 100%;
+  display: inline-flex;
 }
 
 #menu li {
-    display: inline-block;
-    padding: 0.5rem;
+  display: inline-block;
+  padding: 0.5rem;
 }
 
 #menu .menu-link {
-    max-width: calc(var(--menu-width)/3);
-    width: 100%;
-    border: 1px solid $accent-color;
-    cursor: pointer;
+  max-width: calc(var(--menu-width) / 3);
+  width: 100%;
+  border: 1px solid $accent-color;
+  cursor: pointer;
 }
 
 #menu .menu-link.active {
-    background-color: $accent-color;
-    color: $page-background;
+  background-color: $accent-color;
+  color: $page-background;
 }
 
 #menu .menu-link:not(:last-of-type) {
-    border-right: none;
+  border-right: none;
 }
 
 #menu .menu-link:first-of-type {
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
 }
 
 #menu .menu-link:last-of-type {
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 
 #stats-holder {
-    grid-template-areas: 'players'
-                         'coaches'
-                         'referees'
-                         'support';
+  grid-template-areas:
+    "players"
+    "coaches"
+    "referees"
+    "support";
 }
 
 #player-stats {
-    grid-area: players;
-    overflow-x: auto;
+  grid-area: players;
+  overflow-x: auto;
 }
 
 #ref-stats {
-    grid-area: referees;
+  grid-area: referees;
 }
 
-.stats-table {
+/* Variables
+================================== */
+$bw: 3px; // border width
 
-  border-collapse: collapse; 
+/* Tables
+================================== */
+.data-table {
+  margin: 0 0 3em 0;
+  padding: 0;
+  display: block;
+}
 
-    thead {
-        background-color: $table-header-color;
-        color: $table-header-text-color;
+.player-data {
+  margin-bottom: 1em;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  column-gap: 0;
+  grid-template-areas:
+    "name name"
+    "header stat"
+    "header stat"
+    "header stat";
+}
+
+.player-name {
+  grid-area: name;
+  background-color: $page-background;
+}
+
+.data-table-heading {
+  grid-area: header;
+  background-color: $table-header-color;
+  color: $table-header-text-color;
+}
+
+.data-table-heading > .data-table-cell {
+    font-weight: 900;
+}
+
+.data-table-row {
+  grid-area: stat;
+}
+
+.data-table-row > .data-table-cell {
+    text-align: right;
+}
+
+.data-table-cell {
+  box-sizing: border-box;
+  flex-grow: 1;
+  width: 100%; // Default to full width
+  padding: 0.8em 1.2em;
+  overflow: hidden; // Or flex might break
+  list-style: none;
+  border: solid $bw white;
+}
+
+@media all and (max-width: 767px) {
+
+    .data-table-cell.player-name {
+        border: none;
+        font-size: 1.25em;
+        padding: .4em 1.2em 0.4em $bw;
     }
 
-    thead > tr > th,
-    tbody > tr > td {
-        padding: initial 10px;
+    .player-name .link, .player-name a {
+        color: $accent-color;
+    text-decoration: underline;
+    font-weight: 700;
+    cursor: pointer;
+
+    &:visited {
+        color: $accent-color;
     }
 
-    tbody > tr > td:not(:first-child) {
-        text-align: right;
+    &:hover,
+    &:visited:hover {
+        color: $accent-color;
+        text-decoration: none;
     }
+    }
+}
 
-    tbody > tr:nth-child(odd) {
+@media all and (min-width: 768px) {
+  .player-data,
+  .data-table-heading,
+  .data-table-row {
+    display: flex;
+  }
+
+  .data-table-heading > .data-table-cell,
+  .data-table-row > .data-table-cell {
+      text-align: center;
+  }
+
+  .player-data {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: ". header" "name stat";
+    margin-bottom: 0;
+  }
+
+  .player-data:not(:first-of-type) > .data-table-heading {
+    display: none;
+  }
+
+  .data-table .player-data:nth-of-type(odd) {
+      .player-name, .data-table-row {
         background-color: $table-row-odd-color;
-    }
+      }
+  }
 
-    tbody tr:nth-child(even) {
-        background-color: $table-row-even-color;
+  .data-table .player-data:nth-of-type(even) {
+    .player-name, .data-table-row {
+      background-color: $table-row-even-color;
     }
+}
 
-    tbody > tr > td {
-        padding: 5px 10px;
-    }
+  .data-table-cell {
+      border: none;
+  }
 }
