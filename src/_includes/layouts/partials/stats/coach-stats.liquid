@@ -1,0 +1,16 @@
+<div class="container" id="coach-stats">
+    <h2 class="h2 loud">Coaches</h2>
+    <div class="data-table">
+        {% for coach in coaches %}
+        <div class="data">
+                <div class="data-table-heading">
+                    <div class="data-table-cell">Matches</div>
+                </div>
+                <div class="data-table-cell name"><a href="#" class="link">{{ coach.name[locale] }}</a></div>
+                <div class="data-table-row">
+                    <div class="data-table-cell">{{ coach.matchCount }}</div>
+                </div>
+            </div>
+            {% endfor %}
+    </div>
+</div>
