@@ -22,6 +22,9 @@
                 </div>
                 {% endfor %}
             </div>
+            <h3 class="h3">Players</h3>
+            {% assign players = team.players %}
+            {% include './layouts/partials/stats/player-stats' %}
         {% endfor %}
     </div>
 </div>

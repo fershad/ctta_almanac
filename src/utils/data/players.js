@@ -1,15 +1,8 @@
 const groq = require('groq')
 const client = require('../sanityClient')
-const countMatches = require('./countMatches')
-const getMatchStats = require('./generateStats')
+const generatePlayer = require('./generatePlayers')
 
-function generatePlayer (data) {
-    return {
-      ...data,
-      matchCount: countMatches(data.matches),
-      matchStats: getMatchStats(data._id, data.matches)
-    }
-  }
+
   
   async function getPlayersData () {
     const filter = groq`*[_type == "person" && !(_id in path("drafts.**")) && "player" in role]`

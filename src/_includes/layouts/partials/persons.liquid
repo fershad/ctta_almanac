@@ -1,5 +1,11 @@
+{% assign players = collection.players %}
+
 <div class="grid" id="stats-holder">
+    <div class="container" id="player-stats">
+        <h2 class="h2 loud">Players</h2>    
     {% include './layouts/partials/stats/player-stats' %}
+    </div>
+    
     {% include './layouts/partials/stats/coach-stats' %}
     {% include './layouts/partials/stats/ref-stats' %}
     {% include './layouts/partials/stats/support-stats' %}

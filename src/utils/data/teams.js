@@ -1,11 +1,21 @@
 const groq = require('groq')
 const client = require('../sanityClient')
+const generatePlayers = require('./generatePlayers')
 
 function generateTeam (data) {
     return {
       ...data,
-      matches: data.matches.map(generateMatches)
+      matches: data.matches.map(generateMatches),
+      players: data.players.map(generatePlayers),
     }
+  }
+
+  const generateCoach = (coach) => {
+      
+  }
+
+  function getOccurences(array, value) {
+    return array.filter((v) => (v._ref === value)).length;
   }
 
   const generateMatches = (match) => {
@@ -42,6 +52,13 @@ function generateTeam (data) {
           gameDate,
           opponent,
           taipeiScore
+      },
+      "players": *[_type == "person" && "player" in role && references(^._id)] {
+        ...,
+        'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
+        "matches": *[_type == "gamesTeam" && references(^._id)]{
+            ...
+        }
       }
     }`
     const order = ``
