@@ -213,7 +213,7 @@ $bw: 1.5px; // border width
 
 @media all and (max-width: 767px) {
 
-    .data-table-cell.name {
+    .data-table-cell.name, .data-table-cell.team-name {
         border: none;
         font-size: 1.25em;
         padding: .4em 1em 0.4em $bw;
@@ -229,11 +229,6 @@ $bw: 1.5px; // border width
       border: none;
       background-color: $table-header-color;
       color: $table-header-text-color;
-    }
-
-    .team-name {
-      border: none;
-      padding: .4em 1em 0.4em $bw;
     }
 
     // .name .link, .name a {
