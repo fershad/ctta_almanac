@@ -1,0 +1,27 @@
+<div class="grid" id="stats-holder">
+    <div class="container" id="team-stats">
+        {% for team in teams %}
+            <h2 class="h2 loud">{{ team.name[locale] }}</h2>
+
+            <h3 class="h3">Matches</h3>
+            <div class="data-table">
+                {% for match in team.matches %}
+                <div class="data team">
+                    <div class="data-table-heading">
+                        <div class="data-table-cell">Date</div>
+                        <div class="data-table-cell">Event</div>
+                        <div class="data-table-cell">Opponent</div>
+                        <div class="data-table-cell">Score</div>
+                        <div class="data-table-cell">Result</div>
+                    </div>
+                    <div class="data-table-cell date">{{ match.gameDate | date: "%d %b %Y" }}</div>
+                        <div class="data-table-cell event">{{ match.event.name[locale] }}</div>
+                        <div class="data-table-cell team-name"><a href="#" class="link"><span class="versus">v. </span>{{ match.opponent.name[locale] }}</a></div>
+                        <div class="data-table-cell score">{{ match.taipeiScore }} - {{ match.opponent.score }}</div>
+                        <div class="data-table-cell result">{{ match.result }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

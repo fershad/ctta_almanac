@@ -135,18 +135,48 @@ $bw: 1.5px; // border width
 .data {
   margin-bottom: 1em;
   display: grid;
-  grid-template-columns: 60% 40%;
   column-gap: 0;
+}
+
+.data.person {
   grid-template-areas:
     "name name"
     "header stat"
     "header stat"
     "header stat";
+  grid-template-columns: 60% 40%;
+}
+
+.data.team {
+  grid-template-areas: "team team"
+                       "event date"
+                       "score result";
+  grid-template-columns: 2fr 1fr;
 }
 
 .name {
   grid-area: name;
   background-color: $page-background;
+}
+
+.team-name {
+  grid-area: team;
+}
+
+.event {
+  grid-area: event;
+}
+
+.date {
+  grid-area: date;
+}
+
+.score {
+  grid-area: score;
+}
+
+.result {
+  grid-area: result;
 }
 
 .data-table-heading {
@@ -161,6 +191,10 @@ $bw: 1.5px; // border width
 
 .data-table-row {
   grid-area: stat;
+}
+
+.data.team > .data-table-row {
+  grid-area: rows;
 }
 
 .data-table-row > .data-table-cell {
@@ -183,6 +217,23 @@ $bw: 1.5px; // border width
         border: none;
         font-size: 1.25em;
         padding: .4em 1em 0.4em $bw;
+    }
+
+    .data.team .data-table-heading {
+      display: none;
+    }
+
+    .event, .date {
+      font-size: 0.8em;
+      padding: 0.2em 1em 0.4em $bw;
+      border: none;
+      background-color: $table-header-color;
+      color: $table-header-text-color;
+    }
+
+    .team-name {
+      border: none;
+      padding: .4em 1em 0.4em $bw;
     }
 
     // .name .link, .name a {
@@ -222,9 +273,18 @@ $bw: 1.5px; // border width
 
   .data {
     display: grid;
+    margin-bottom: 0;
+  }
+
+  .data.person {
     grid-template-columns: 1fr 2fr;
     grid-template-areas: ". header" "name stat";
-    margin-bottom: 0;
+  }
+
+  .data.team {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: "header header header header header"
+                         "date event team score result";
   }
 
   .data:not(:first-of-type) > .data-table-heading {
@@ -245,5 +305,13 @@ $bw: 1.5px; // border width
 
   .data-table-cell {
       border: none;
+  }
+
+  .data-table-cell.details {
+      width: 10em;
+  }
+
+  .data.team .versus {
+    display: none;
   }
 }
