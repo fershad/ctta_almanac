@@ -1,0 +1,55 @@
+<div class="grid" id="stats-holder">
+    <div class="container" id="event-stats">
+        {% for event in events %}
+        {% unless event.matches.size == 0 and event.referees.event.size == 0 %}
+        <h2 class="h2 loud">{{ event.name[locale] }}</h2>
+        <p class="">Event Type: {{ event.type | capitalize }}</p>
+        <div class="data-table">
+            {% for match in event.matches %}
+            <div class="data event">
+                <div class="data-table-heading">
+                    <div class="data-table-cell">Date</div>
+                    <div class="data-table-cell">Division</div>
+                    <div class="data-table-cell">Opponent</div>
+                    <div class="data-table-cell">Score</div>
+                    <div class="data-table-cell">Result</div>
+                </div>
+                <div class="data-table-cell date">{{ match.gameDate | date: "%d %b %Y" }}</div>
+                    <div class="data-table-cell division">{{ match.division.name[locale] }}</div>
+                    <div class="data-table-cell team-name"><a href="#" class="link"><span class="versus">v. </span>{{ match.opponent.name[locale] }}</a></div>
+                    <div class="data-table-cell score">{{ match.taipeiScore }} - {{ match.opponent.score }}</div>
+                    <div class="data-table-cell result">{{ match.result }}</div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endunless %}
+        {% unless event.referees.event.size == 0 %}
+        <h3 class="h3">Referees</h3>
+        <div class="data-table">
+        {% for matches in event.referees %}
+            {% for match in matches %}
+            {% if match.gameDate %}
+            <div class="data event refs">
+                <div class="data-table-heading">
+                    <div class="data-table-cell">Date</div>
+                    <div class="data-table-cell">Division</div>
+                    <div class="data-table-cell">Teams (Score)</div>
+                    <div class="data-table-cell">Referees</div>
+                </div>
+                    <div class="data-table-cell date">{{ match.gameDate | date: "%d %b %Y" }}</div>
+                    <div class="data-table-cell division">{{ match.division[locale] }}</div>
+                    <div class="data-table-cell teams">{{ match.homeTeam.name[locale] }} {{ match.homeTeam.score }} v. {{ match.awayTeam.score }} {{ match.awayTeam.name[locale] }}</a></div>
+                    <div class="data-table-cell referees">
+                        {% for ref in match.referee %}
+                        <a href="#" class="link">{{ ref.name[locale] }}</a>
+                        {% endfor %}
+                    </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+        {% endunless %}
+        {% endfor %}
+        </div>
+        </div>

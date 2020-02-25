@@ -133,7 +133,7 @@ $bw: 1.5px; // border width
 }
 
 .data {
-  margin-bottom: 1em;
+  margin-bottom: 2em;
   display: grid;
   column-gap: 0;
 }
@@ -154,30 +154,54 @@ $bw: 1.5px; // border width
   grid-template-columns: 2fr 1fr;
 }
 
-.name {
-  grid-area: name;
-  background-color: $page-background;
+.data.event {
+  grid-template-areas: "division division"
+                       "team team"
+                       "date date"
+                       "score result";
+  grid-template-columns: 2fr 1fr;
 }
 
-.team-name {
-  grid-area: team;
+.data.event.refs {
+  grid-template-areas: "division"
+                       "date"
+                       "team"
+                       "referees";
+  grid-template-columns: 1fr;
 }
 
-.event {
-  grid-area: event;
+.data-table-cell {
+  &.division {
+    grid-area: division;
+  }
+  &.result {
+    grid-area: result;
+  }
+  &.score {
+    grid-area: score;
+  }
+  &.date {
+    grid-area: date;
+  }
+  &.name {
+    grid-area: name;
+    background-color: $page-background;
+  }
+  &.team-name, &.teams {
+    grid-area: team;
+  }
+  &.event {
+    grid-area: event;
+  }
+  &.referees {
+    grid-area: referees;
+
+    .link, a {
+      display: block;
+    }
+  }
 }
 
-.date {
-  grid-area: date;
-}
-
-.score {
-  grid-area: score;
-}
-
-.result {
-  grid-area: result;
-}
 
 .data-table-heading {
   grid-area: header;
@@ -213,17 +237,29 @@ $bw: 1.5px; // border width
 
 @media all and (max-width: 767px) {
 
-    .data-table-cell.name, .data-table-cell.team-name {
+    .data.team .data-table-cell.name, .data.team .data-table-cell.team-name {
         border: none;
         font-size: 1.25em;
         padding: .4em 1em 0.4em $bw;
     }
 
-    .data.team .data-table-heading {
+    .data.event .data-table-cell.division {
+        border: none;
+        font-size: 1.25em;
+        padding: 0 0 0 $bw;
+    }
+
+    .data.event .data-table-cell.team-name {
+      border: none;
+        font-size: 1.25em;
+        padding: 0 0 1em $bw;
+    }
+
+    .data.team .data-table-heading, .data.event .data-table-heading {
       display: none;
     }
 
-    .event, .date {
+    .data-table-cell.event, .data-table-cell.date {
       font-size: 0.8em;
       padding: 0.2em 1em 0.4em $bw;
       border: none;
@@ -280,6 +316,18 @@ $bw: 1.5px; // border width
     grid-template-columns: repeat(5, 1fr);
     grid-template-areas: "header header header header header"
                          "date event team score result";
+  }
+
+  .data.event {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: "header header header header header"
+                         "date division team score result";
+  }
+
+  .data.event.refs {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "header header header header"
+                         "date division team referees";
   }
 
   .data:not(:first-of-type) > .data-table-heading {
