@@ -1,11 +1,11 @@
-<div class="grid" id="persons">
-    <div id="player-stats">
-        <h2 class="h2 loud">Players</h2>
-        {% assign players = persons.players %}    
-        {% include './layouts/partials/stats/player-stats' %}
-    </div>
-    
-    {% include './layouts/partials/stats/coach-stats' %}
-    {% include './layouts/partials/stats/ref-stats' %}
-    {% include './layouts/partials/stats/support-stats' %}
+<div class="holder" id="persons">
+        <div id="player-stats">
+            <h2 class="h2 loud">Players</h2>
+            {% assign players = persons.players %}    
+            {% include './layouts/partials/stats/player-stats' %}
+        </div>
+        
+        {% include './layouts/partials/stats/coach-stats' %}
+        {% include './layouts/partials/stats/ref-stats' %}
+        {% include './layouts/partials/stats/support-stats' %}
 </div>

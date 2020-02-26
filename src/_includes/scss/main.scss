@@ -35,10 +35,6 @@ html {
   text-align: center;
 }
 
-.grid {
-  display: grid;
-}
-
 #page-heading {
   margin-top: 2rem;
 }
@@ -115,7 +111,6 @@ html {
 
     #player-stats {
       grid-area: players;
-      overflow-x: auto;
     }
     
     #ref-stats {
@@ -261,7 +256,7 @@ $bw: 1.5px; // border width
     .data.event .data-table-cell.division, .data-table-cell.name {
         border: none;
         font-size: 1.25em;
-        padding: 0 0 0 $bw;
+        padding: 0 0 0.5em $bw;
     }
 
     .data.event .data-table-cell.team-name {
@@ -291,6 +286,22 @@ $bw: 1.5px; // border width
 
 @media all and (min-width: 768px) {
 
+#persons {
+    width: 100%;
+    display: grid;
+    position: relative;
+    grid-template-areas: "players coaches"
+                         "players referees"
+                         "players support";
+    grid-template-columns: 1fr 500px;
+    column-gap: 60px;
+    grid-column-gap: 60px;
+  }
+
+  .data-content {
+    width: 100%;
+  }
+
   .data-table {
     display: block;
   }
@@ -307,13 +318,22 @@ $bw: 1.5px; // border width
       text-align: center;
   }
 
+  .data-table-cell.name {
+    text-align: left;
+  }
+
   .data {
     display: grid;
     margin-bottom: 0;
   }
 
-  .data.person {
+  #player-stats .data.person {
     grid-template-columns: 1fr 2fr;
+    grid-template-areas: ". header" "name stat";
+  }
+
+  .data.person { 
+    grid-template-columns: 2fr 1fr;
     grid-template-areas: ". header" "name stat";
   }
 
