@@ -1,18 +1,20 @@
 
     <div class="data-table">
         {% for player in players %}
+        {% unless player.matchCount == 0 %}
         <div class="data person">
-                <div class="data-table-heading">
-                    <div class="data-table-cell">Matches</div>
-                    <div class="data-table-cell">Touchdowns</div>
-                    <div class="data-table-cell">Assists*</div>
-                </div>
-                <div class="data-table-cell name"><a href="/{{ locale }}/players/{{ player.name.en | slug }}" class="link">{{ player.name[locale] }}</a></div>
-                <div class="data-table-row">
-                    <div class="data-table-cell">{{ player.matchCount }}</div>
-                    <div class="data-table-cell">{{ player.matchStats.touchdowns }}</div>
-                    <div class="data-table-cell">{{ player.matchStats.assists }}</div>
-                </div>
+            <div class="data-table-heading">
+                <div class="data-table-cell">Matches</div>
+                <div class="data-table-cell">Touchdowns</div>
+                <div class="data-table-cell">Assists*</div>
             </div>
+            <div class="data-table-cell name"><a href="/{{ locale }}/players/{{ player.name.en | slug }}" class="link">{{ player.name[locale] }}</a></div>
+            <div class="data-table-row">
+                <div class="data-table-cell">{{ player.matchCount }}</div>
+                <div class="data-table-cell">{{ player.matchStats.touchdowns }}</div>
+                <div class="data-table-cell">{{ player.matchStats.assists }}</div>
+            </div>
+        </div>
+        {% endunless %}
             {% endfor %}
     </div>

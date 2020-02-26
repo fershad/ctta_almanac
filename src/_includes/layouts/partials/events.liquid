@@ -1,5 +1,5 @@
 <div class="grid" id="events">
-    <div class="container">
+    <div>
         {% for event in events %}
         {% unless event.matches.size == 0 and event.referees.event.size == 0 %}
         <h2 class="h2 loud">{{ event.name[locale] }}</h2>

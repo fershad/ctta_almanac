@@ -163,7 +163,8 @@ $bw: 1.5px; // border width
 
 .data.team {
   grid-template-areas: "team team"
-                       "event date"
+                       "event event"
+                       "date date"
                        "score result";
   grid-template-columns: 2fr 1fr;
 }
@@ -257,7 +258,7 @@ $bw: 1.5px; // border width
         padding: .4em 1em 0.4em $bw;
     }
 
-    .data.event .data-table-cell.division {
+    .data.event .data-table-cell.division, .data-table-cell.name {
         border: none;
         font-size: 1.25em;
         padding: 0 0 0 $bw;
@@ -275,28 +276,17 @@ $bw: 1.5px; // border width
 
     .data-table-cell.event, .data-table-cell.date {
       font-size: 0.8em;
-      padding: 0.2em 1em 0.4em $bw;
+      padding: 0.2em 1em 0.4em 1.2em;
       border: none;
       background-color: $table-header-color;
       color: $table-header-text-color;
     }
 
-    // .name .link, .name a {
-    //     color: $accent-color;
-    // text-decoration: underline;
-    // font-weight: 700;
-    // cursor: pointer;
-
-    // &:visited {
-    //     color: $accent-color;
-    // }
-
-    // &:hover,
-    // &:visited:hover {
-    //     color: $accent-color;
-    //     text-decoration: none;
-    // }
-    // }
+    .data-table-cell.score, .data-table-cell.result,
+    .data-table-row .data-table-cell,
+    .data-table-cell.teams, .data-table-cell.referees {
+      background-color: #FFFFFF;
+    }
 }
 
 @media all and (min-width: 768px) {
@@ -312,7 +302,8 @@ $bw: 1.5px; // border width
   }
 
   .data-table-heading > .data-table-cell,
-  .data-table-row > .data-table-cell {
+  .data-table-row > .data-table-cell,
+  .data-table-cell {
       text-align: center;
   }
 
@@ -349,13 +340,13 @@ $bw: 1.5px; // border width
   }
 
   .data-table .data:nth-of-type(odd) {
-      .name, .data-table-row {
+      .name, .data-table-row, > .data-table-cell {
         background-color: $table-row-odd-color;
       }
   }
 
   .data-table .data:nth-of-type(even) {
-    .name, .data-table-row {
+    .name, .data-table-row, > .data-table-cell {
       background-color: $table-row-even-color;
     }
 }
