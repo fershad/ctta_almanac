@@ -16,10 +16,9 @@
         {% endif %}        
     </ul>
 
-    <!-- Menu data from Sanity -->
     <ul id="menu">
-        {% for m in site.menu[locale] %}
-        <li class="menu-link {% if m == site.menu[locale][0] %}active{% endif %}">{{ m }}</li>
-        {% endfor %}
+        <li class="menu-link"><a href="/{{ locale }}/persons">Persons</a></li>
+        <li class="menu-link"><a href="/{{ locale }}/teams">Teams</a></li>
+        <li class="menu-link"><a href="/{{ locale }}/events">Events</a></li>
     </ul>
 </div>

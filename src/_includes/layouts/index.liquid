@@ -19,11 +19,9 @@
     <div class="container" id="page-heading">
         {% include './layouts/partials/page-heading' %}
     </div>
-    {%- comment -%}
-    {% include './layouts/partials/persons' %}
-    {% include './layouts/partials/teams' %}
-    {%- endcomment -%}
-    {% include './layouts/partials/events' %}
+    <div class="container">
+      {{ content }}
+    </div>
 </body>
 
 </html>

@@ -6,7 +6,7 @@
                 <div class="data-table-heading">
                     <div class="data-table-cell">Matches</div>
                 </div>
-                <div class="data-table-cell name"><a href="#" class="link">{{ ref.name[locale] }}</a></div>
+                <div class="data-table-cell name"><a href="/{{ locale }}/referees/{{ referee.name.en | slug }}" class="link">{{ ref.name[locale] }}</a></div>
                 <div class="data-table-row">
                     <div class="data-table-cell">{{ ref.matchCount }}</div>
                 </div>

@@ -86,6 +86,12 @@ html {
   color: $page-background;
 }
 
+#menu .menu-link {
+  a, a:visited {
+    color: inherit;
+  }
+}
+
 #menu .menu-link:not(:last-of-type) {
   border-right: none;
 }
@@ -100,21 +106,29 @@ html {
   border-bottom-right-radius: 25px;
 }
 
-#stats-holder {
+#persons {
   grid-template-areas:
     "players"
     "coaches"
     "referees"
     "support";
-}
 
-#player-stats {
-  grid-area: players;
-  overflow-x: auto;
-}
-
-#ref-stats {
-  grid-area: referees;
+    #player-stats {
+      grid-area: players;
+      overflow-x: auto;
+    }
+    
+    #ref-stats {
+      grid-area: referees;
+    }
+    
+    #coaches-stats {
+      grid-area: coaches;
+    }
+    
+    #support-stats {
+      grid-area: support;
+    }
 }
 
 /* Variables

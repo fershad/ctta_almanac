@@ -6,7 +6,7 @@
                 <div class="data-table-heading">
                     <div class="data-table-cell">Events</div>
                 </div>
-                <div class="data-table-cell name"><a href="#" class="link">{{ person.name[locale] }}</a></div>
+                <div class="data-table-cell name"><a href="/{{ locale }}/supporters/{{ person.name.en | slug }}" class="link">{{ person.name[locale] }}</a></div>
                 <div class="data-table-row">
                     <div class="data-table-cell">{{ person.eventCount }}</div>
                 </div>

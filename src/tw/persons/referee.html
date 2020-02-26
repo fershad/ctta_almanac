@@ -1,0 +1,12 @@
+---
+layout: index
+tags:
+  - referees
+pagination:
+  alias: referee
+  data: referees
+  size: 1
+  addAllPagesToCollections: true
+permalink: /{{ locale }}/referees/{{ referee.name.en | slug }}/index.html
+---
+<h2>{{ referee.name[locale] }}</h2> 

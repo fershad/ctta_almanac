@@ -1,0 +1,18 @@
+<div class="data-table">
+    {% for match in matches %}
+    <div class="data team">
+        <div class="data-table-heading">
+            <div class="data-table-cell">Date</div>
+            <div class="data-table-cell">Event</div>
+            <div class="data-table-cell">Opponent</div>
+            <div class="data-table-cell">Score</div>
+            <div class="data-table-cell">Result</div>
+        </div>
+        <div class="data-table-cell date">{{ match.gameDate | date: "%d %b %Y" }}</div>
+            <div class="data-table-cell event">{{ match.event.name[locale] }}</div>
+            <div class="data-table-cell team-name"><a href="/{{ locale }}/events/{{ match.event.name.en | slug }}/matches/{{ match.gameDate | date: '%y%m%d' }}/{{ match.opponent.name.en | slug }}" class="link"><span class="versus">v. </span>{{ match.opponent.name[locale] }}</a></div>
+            <div class="data-table-cell score">{{ match.taipeiScore }} - {{ match.opponent.score }}</div>
+            <div class="data-table-cell result">{{ match.result }}</div>
+    </div>
+    {% endfor %}
+</div>

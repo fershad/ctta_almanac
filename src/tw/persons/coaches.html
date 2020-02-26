@@ -1,0 +1,12 @@
+---
+layout: index
+tags:
+  - coaches
+pagination:
+  alias: coach
+  data: coaches
+  size: 1
+  addAllPagesToCollections: true
+permalink: /{{ locale }}/coaches/{{ coach.name.en | slug }}/index.html
+---
+<h2>{{ coach.name[locale] }}</h2> 

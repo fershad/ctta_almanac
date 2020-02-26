@@ -1,3 +1,5 @@
+const slugify = require ("slugify")
+
 module.exports = function(eleventyConfig) {
 
     eleventyConfig.addPassthroughCopy("src/_includes/css/*.min.css");
@@ -9,7 +11,10 @@ module.exports = function(eleventyConfig) {
     // Give shortnames to layouts
     eleventyConfig.addLayoutAlias('index', 'index.liquid');
 
-    // eleventyConfig.addFilter("addZone", require("./filters/zone.js") );
+    // eleventyConfig.addFilter("slug", function slug(str) {
+    //   return slugify(str.toString(), { replacement: "-", lower: true });
+    // } );
+    
     eleventyConfig.setLiquidOptions({
       dynamicPartials: true
     });

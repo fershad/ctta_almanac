@@ -1,5 +1,5 @@
-<div class="grid" id="stats-holder">
-    <div class="container" id="event-stats">
+<div class="grid" id="events">
+    <div class="container">
         {% for event in events %}
         {% unless event.matches.size == 0 and event.referees.event.size == 0 %}
         <h2 class="h2 loud">{{ event.name[locale] }}</h2>
@@ -16,7 +16,7 @@
                 </div>
                 <div class="data-table-cell date">{{ match.gameDate | date: "%d %b %Y" }}</div>
                     <div class="data-table-cell division">{{ match.division.name[locale] }}</div>
-                    <div class="data-table-cell team-name"><a href="#" class="link"><span class="versus">v. </span>{{ match.opponent.name[locale] }}</a></div>
+                    <div class="data-table-cell team-name"><a href="/{{ locale }}/events/{{ match.event.name.en | slug }}/matches/{{ match.gameDate | date: '%y%m%d' }}/{{ match.opponent.name.en | slug }}" class="link"><span class="versus">v. </span>{{ match.opponent.name[locale] }}</a></div>
                     <div class="data-table-cell score">{{ match.taipeiScore }} - {{ match.opponent.score }}</div>
                     <div class="data-table-cell result">{{ match.result }}</div>
             </div>
@@ -38,10 +38,10 @@
                 </div>
                     <div class="data-table-cell date">{{ match.gameDate | date: "%d %b %Y" }}</div>
                     <div class="data-table-cell division">{{ match.division[locale] }}</div>
-                    <div class="data-table-cell teams">{{ match.homeTeam.name[locale] }} {{ match.homeTeam.score }} v. {{ match.awayTeam.score }} {{ match.awayTeam.name[locale] }}</a></div>
+                    <div class="data-table-cell teams">{{ match.homeTeam.name[locale] }} v. {{ match.awayTeam.name[locale] }} ({{ match.homeTeam.score }} v. {{ match.awayTeam.score }})</a></div>
                     <div class="data-table-cell referees">
                         {% for ref in match.referee %}
-                        <a href="#" class="link">{{ ref.name[locale] }}</a>
+                        <a href="/{{ locale }}/referees/{{ referee.name.en | slug }}" class="link">{{ ref.name[locale] }}</a>
                         {% endfor %}
                     </div>
             </div>

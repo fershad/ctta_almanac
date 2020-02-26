@@ -1,0 +1,12 @@
+---
+layout: index
+tags:
+  - matches
+pagination:
+  alias: match
+  data: matches
+  size: 1
+  addAllPagesToCollections: true
+permalink: "/{{ locale }}/events/{{ match.event.name.en | slug }}/matches/{{ match.gameDate | date: '%y%m%d' }}/{{ match.opponent.name.en | slug }}/index.html"
+---
+<h2>{{ match.opponent[locale] }}</h2> 
