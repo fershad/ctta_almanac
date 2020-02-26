@@ -1,7 +1,7 @@
 const groq = require('groq')
 const client = require('../sanityClient')
-const generatePlayers = require('./generatePlayers')
-const generateMatches = require('./generateMatches')
+const generatePlayer = require('../generators/generatePlayer')
+const generateMatches = require('../generators/generateMatches')
 
 
 function generateTeam (data) {
@@ -9,7 +9,7 @@ function generateTeam (data) {
     return {
       ...data,
       matches: data.matches.map(generateMatches),
-      players: data.players.map(generatePlayers),
+      players: data.players.map(generatePlayer),
     }
   }
   

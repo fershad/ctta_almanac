@@ -1,6 +1,6 @@
 const groq = require('groq')
 const client = require('../sanityClient')
-const generateMatches = require('./generateMatches')
+const generateMatches = require('../generators/generateMatches')
 
 function generateEvent (data) {
 

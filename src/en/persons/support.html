@@ -3,10 +3,10 @@ layout: index
 tags:
   - supports
 pagination:
-  alias: person
-  data: support
+  alias: support
+  data: persons.supporters
   size: 1
   addAllPagesToCollections: true
-permalink: /{{ locale }}/supporters/{{ person.name.en | slug }}/index.html
+permalink: /{{ locale }}/supporters/{{ support.name.en | slug }}/index.html
 ---
-<h2>{{ person.name[locale] }}</h2> 
+<h2>{{ support.name[locale] }}</h2> 
