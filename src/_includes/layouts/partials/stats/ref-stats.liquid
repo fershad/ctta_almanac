@@ -1,12 +1,12 @@
 <div class="container" id="ref-stats">
     <h2 class="h2 loud">Referees</h2>
     <div class="data-table">
-        {% for ref in referees %}
+        {% for ref in persons.referees %}
         <div class="data person">
                 <div class="data-table-heading">
                     <div class="data-table-cell">Matches</div>
                 </div>
-                <div class="data-table-cell name"><a href="/{{ locale }}/referees/{{ referee.name.en | slug }}" class="link">{{ ref.name[locale] }}</a></div>
+                <div class="data-table-cell name"><a href="/{{ locale }}/referees/{{ ref.name.en | slug }}" class="link">{{ ref.name[locale] }}</a></div>
                 <div class="data-table-row">
                     <div class="data-table-cell">{{ ref.matchCount }}</div>
                 </div>

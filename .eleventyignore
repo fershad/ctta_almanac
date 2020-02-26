@@ -1,5 +1,2 @@
-src/en/events
-src/en/matches
-src/en/persons/index.html
-src/en/teams
 src/utils/data
+src/utils/generators

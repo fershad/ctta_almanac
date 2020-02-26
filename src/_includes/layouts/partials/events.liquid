@@ -41,7 +41,7 @@
                     <div class="data-table-cell teams">{{ match.homeTeam.name[locale] }} v. {{ match.awayTeam.name[locale] }} ({{ match.homeTeam.score }} v. {{ match.awayTeam.score }})</a></div>
                     <div class="data-table-cell referees">
                         {% for ref in match.referee %}
-                        <a href="/{{ locale }}/referees/{{ referee.name.en | slug }}" class="link">{{ ref.name[locale] }}</a>
+                        <a href="/{{ locale }}/referees/{{ ref.name.en | slug }}" class="link">{{ ref.name[locale] }}</a>
                         {% endfor %}
                     </div>
             </div>
