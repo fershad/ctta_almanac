@@ -9,4 +9,30 @@ pagination:
   addAllPagesToCollections: true
 permalink: /{{ locale }}/coaches/{{ coach.name.en | slug }}/index.html
 ---
-<h2>{{ coach.name[locale] }}</h2> 
+{% assign wins = 0%}
+{% assign draws = 0%}
+{% assign losses = 0 %}
+{% for match in coach.matches %}
+{% case match.result %}
+  {% when "Win" %}
+    {% assign wins = wins | plus: 1 %}
+  {% when "Draw" %}
+    {% assign draws = draws | plus: 1 %}
+  {% else %}
+    {% assign losses = losses | plus: 1 %}
+{% endcase %}
+{% endfor %}
+
+<div class="coach-details">
+  <div class="summary">
+<h2>{{ coach.name[locale] }}</h2>
+<div>
+  <h3>Summary</h3>
+  <p>Matches: {{ coach.matchCount }}</p>
+  <p>Wins: {{ wins }} | Draws: {{ draws }} | Losses: {{ losses }}</p>
+</div>
+</div>
+
+{% assign matches = coach.matches %}
+{% include './layouts/partials/stats/match-stats' %}
+</div>

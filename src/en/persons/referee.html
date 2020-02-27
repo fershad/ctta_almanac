@@ -9,4 +9,30 @@ pagination:
   addAllPagesToCollections: true
 permalink: /{{ locale }}/referees/{{ referee.name.en | slug }}/index.html
 ---
-<h2>{{ referee.name[locale] }}</h2> 
+<div class="referee-details">
+  <div class="summary">
+<h2>{{ referee.name[locale] }}</h2>
+<div>
+  <h3>Summary</h3>
+  <p>Matches: {{ referee.matchCount }}</p>
+</div>
+</div>
+
+{% assign matches = referee.matches %}
+<div class="data-table">
+            {% for match in matches %}
+            {% if match.gameDate %}
+            <div class="data details refs">
+                <div class="data-table-heading">
+                    <div class="data-table-cell">Date</div>
+                    <div class="data-table-cell">Division</div>
+                    <div class="data-table-cell">Teams (Score)</div>
+                </div>
+                    <div class="data-table-cell date">{{ match.gameDate | date: "%d %b %Y" }}</div>
+                    <div class="data-table-cell division">{{ match.division[locale] }}</div>
+                    <div class="data-table-cell teams">{{ match.homeTeam.name[locale] }} v. {{ match.awayTeam.name[locale] }} ({{ match.homeTeam.score }} v. {{ match.awayTeam.score }})</a></div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            </div>
+</div>

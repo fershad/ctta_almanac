@@ -18,7 +18,8 @@ function generateMatch (data) {
         ...,
         playerName->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}}
       },
-      event->{name}
+      division->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}},
+      event->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}}
     }`
     const order = ``
     const query = [filter, projection, order].join(' ')

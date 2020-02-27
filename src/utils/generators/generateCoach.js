@@ -1,8 +1,10 @@
+const generateMatches = require('./generateMatches')
 
 function generateCoach (data) {
     return {
       ...data,
       matchCount: getMatchCount(data._id, data.matches),
+      matches: data.matches.map(generateMatches)
     }
   }
 

@@ -47,7 +47,7 @@ function generateEvent (data) {
           opponent,
           taipeiScore,
       },
-      "referees": *[_type == "gamesReferee" && referee.isReferee && references(^._id)] {
+      "referees": *[_type == "gamesReferee" && references(^._id)] {
         ...,
         referee[]->{name},
         event->{name}

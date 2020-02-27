@@ -180,6 +180,13 @@ $bw: 1.5px; // border width
   grid-template-columns: 1fr;
 }
 
+.data.details.refs {
+  grid-template-areas: "division"
+                       "date"
+                       "team";
+  grid-template-columns: 1fr;
+}
+
 .match-details {
   display: flex;
   flex-direction: column;

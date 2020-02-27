@@ -6,19 +6,20 @@
         padding: .4em 1em 0.4em $bw;
     }
 
-    .data.event .data-table-cell.division, .data-table-cell.name {
+    .data.event .data-table-cell.division, .data.details .data-table-cell.division, .data-table-cell.name {
         border: none;
         font-size: 1.25em;
         padding: 0 0 0.5em $bw;
     }
 
-    .data.event .data-table-cell.team-name {
+    .data.event .data-table-cell.team-name,
+    .data.details .data-table-cell.team-name {
       border: none;
         font-size: 1.25em;
         padding: 0 0 1em $bw;
     }
 
-    .data.team .data-table-heading, .data.event .data-table-heading {
+    .data.team .data-table-heading, .data.event .data-table-heading, .data.details .data-table-heading {
       display: none;
     }
 
@@ -43,10 +44,11 @@
     width: 100%;
     display: grid;
     position: relative;
-    grid-template-areas: "players coaches"
-                         "players referees"
-                         "players support";
-    grid-template-columns: 1fr 500px;
+    grid-template-areas: "players players"
+                         "coaches ."
+                         "referees ."
+                         "support .";
+    grid-template-columns: 1fr 1fr;
     column-gap: 60px;
     grid-column-gap: 60px;
   }
@@ -101,6 +103,12 @@
     grid-template-areas: "header header header header header"
                          "date division team score result";
   }
+  
+  .data.details.refs {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "header header header"
+                         "date division team"; 
+  }
 
   .data.event.refs {
     grid-template-columns: repeat(4, 1fr);
@@ -148,5 +156,19 @@
     .data-table {
         width: 100%;
     }
+  }
+}
+
+@media all and (min-width: 1024px) {
+  #persons {
+    width: 100%;
+    display: grid;
+    position: relative;
+    grid-template-areas: "players coaches"
+                         "players referees"
+                         "players support";
+    grid-template-columns: 1fr 500px;
+    column-gap: 60px;
+    grid-column-gap: 60px;
   }
 }
