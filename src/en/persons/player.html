@@ -9,4 +9,13 @@ pagination:
   addAllPagesToCollections: true
 permalink: /{{ locale }}/players/{{ player.name.en | slug }}/index.html
 ---
-<h2>{{ player.name[locale] }}</h2> 
+<h2>Player Details - {{ player.name[locale] }}</h2>
+<div>
+  <h3>Summary</h3>
+  <p>Matches: {{ player.matchCount }}</p>
+  <p>Touchdowns: {{ player.matchStats.touchdowns }}</p>
+  <p>Assists: {{ player.matchStats.assists }}</p>
+</div>
+
+{% assign matches = player.matches %}
+{% include './layouts/partials/stats/match-stats' %}

@@ -22,11 +22,12 @@ function generatePerson(data) {
           ...,
           'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
           "matches": *[_type == "gamesTeam" && references(^._id)]{
+            gameDate,
               division->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}},
               event->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}},
               "opponent": {
-                score,
-                'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}
+                "score": opponent.score,
+                'name': {'tw': coalesce(opponent.name.tw, opponent.name.en), 'en': coalesce(opponent.name.en, opponent.name.en)}
               },
               players,
               taipeiScore
@@ -36,13 +37,14 @@ function generatePerson(data) {
             ...,
             'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
             "matches": *[_type == "gamesTeam" && references(^._id)]{
+              gameDate,
               division->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}},
               event->{
                 ...,
                 'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}},
               "opponent": {
-                score,
-                'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}
+                "score": opponent.score,
+                'name': {'tw': coalesce(opponent.name.tw, opponent.name.en), 'en': coalesce(opponent.name.en, opponent.name.en)}
               },
               coaches,
               taipeiScore
@@ -52,13 +54,14 @@ function generatePerson(data) {
             ...,
             'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
             "matches": *[_type == "gamesReferee" && references(^._id)]{
+              gameDate,
                 "awayTeam": {
-                  score,
-                'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}
+                  "score": awayTeam.score,
+                'name': {'tw': coalesce(awayTeam.name.tw, awayTeam.name.en), 'en': coalesce(awayTeam.name.en, awayTeam.name.en)}
                 },
                 "homeTeam": {
-                  score,
-                'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}
+                  "score": homeTeam.score,
+                'name': {'tw': coalesce(homeTeam.name.tw, homeTeam.name.en), 'en': coalesce(homeTeam.name.en, homeTeam.name.en)}
                 },
                 'division': {'tw': coalesce(division.tw, division.en), 'en': coalesce(division.en, division.en)},
                 event->{
