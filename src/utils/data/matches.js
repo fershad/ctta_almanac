@@ -1,12 +1,12 @@
 const groq = require('groq')
 const client = require('../sanityClient')
-//const generateMatches = require('./generateMatches')
+const generateMatches = require('../generators/generateMatches')
 
 
 function generateMatch (data) {
 
     return {
-      ...data
+      ...generateMatches(data)
     }
   }
   
@@ -14,6 +14,10 @@ function generateMatch (data) {
     const filter = groq`*[_type == "gamesTeam" && !(_id in path("drafts.**"))]`
     const projection = groq`{
       ...,
+      players[]{
+        ...,
+        playerName->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}}
+      },
       event->{name}
     }`
     const order = ``

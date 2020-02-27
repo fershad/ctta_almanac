@@ -9,4 +9,34 @@ pagination:
   addAllPagesToCollections: true
 permalink: "/{{ locale }}/events/{{ match.event.name.en | slug }}/matches/{{ match.gameDate | date: '%y%m%d' }}/{{ match.opponent.name.en | slug }}/index.html"
 ---
-<h2>{{ match.opponent.name[locale] }}</h2> 
+<div class="match-details">
+  <div class="summary">
+    <h2>{{ match.division.name[locale] }} v. {{ match.opponent.name[locale] }}</h2> 
+    <p>Result: {{ match.taipeiScore }} - {{ match.opponent.score }} ({{ match.result }})</p>
+    <p>Event: {{ match.event.name[locale] }}</p>
+  </div>
+  
+  <div class="data-table">
+    {% for player in match.players %}
+    <div class="data person">
+      <div class="data-table-heading">
+          <div class="data-table-cell">Touchdowns</div>
+          <div class="data-table-cell">Assists*</div>
+      </div>
+      <div class="data-table-cell name"><a href="/{{ locale }}/players/{{ player.playerName.name.en | slug }}" class="link">{{ player.playerName.name[locale] }}</a></div>
+      <div class="data-table-row">
+          <div class="data-table-cell">{% if player.touchdowns %}
+            {{ player.touchdowns }}
+            {% else %}
+              -
+          {% endif %}</div>
+          <div class="data-table-cell">{% if player.assists %}
+            {{ player.assists }}
+            {% else %}
+              -
+          {% endif %}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
