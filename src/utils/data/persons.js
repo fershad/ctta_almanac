@@ -74,7 +74,8 @@ function generatePerson(data) {
             ...,
             'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
             "events": *[_type == "event" && references(^._id)]{
-                ...
+                ...,
+                'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
             }
           },
     }`

@@ -9,4 +9,21 @@ pagination:
   addAllPagesToCollections: true
 permalink: /{{ locale }}/supporters/{{ support.name.en | slug }}/index.html
 ---
-<h2>{{ support.name[locale] }}</h2> 
+<div class="support-details">
+  <div class="summary">
+<h2>{{ support.name[locale] }}</h2>
+<div>
+  <h3>Summary</h3>
+  <p>Events: {{ support.eventCount }}</p>
+</div>
+</div>
+<h3>
+  Events Attended:
+</h3>
+<ul class="data-table">
+  {% for event in support.events %}
+    <li>{{ event.name[locale] }}</li>
+  {% endfor %}
+  </ul>
+</div>
+</div>
