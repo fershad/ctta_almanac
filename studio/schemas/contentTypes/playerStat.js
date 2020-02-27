@@ -17,17 +17,14 @@ export default {
           // before attempting to use them
           if (!document.division) {
             return {
-              filter: 'role == $role',
-              params: {
-                role: 'player'
-              }
+              filter: 'player.isPlayer'
             }
           }
-
+          
+          console.log(document.division._ref)
           return {
-            filter: '$role in role &&  $division match division[].division._ref',
+            filter: 'player.isPlayer && $year in player.years && $division == player.division[]._ref',
             params: {
-              role: 'player',
               division: document.division._ref,
               year: document.gameDate.split('-')[0] + "-01-01"
             }

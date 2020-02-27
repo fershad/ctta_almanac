@@ -78,8 +78,26 @@ export default {
                     type: `reference`,
                     to: [{type: `person`}],
                     options: {
-                        filter: '$role in role',
-                        filterParams: {role: 'coach'}
+                        filter: ({
+                          document
+                        }) => {
+                          // Always make sure to check for document properties
+                          // before attempting to use them
+                          if (!document.division) {
+                            return {
+                              filter: 'coach.isCoach'
+                            }
+                          }
+                          
+                          console.log(document.division._ref)
+                          return {
+                            filter: 'coach.isCoach && $year in coach.years && $division == coach.division[]._ref',
+                            params: {
+                              division: document.division._ref,
+                              year: document.gameDate.split('-')[0] + "-01-01"
+                            }
+                          }
+                        }
                       }
                 }
             ],

@@ -75,8 +75,24 @@ export default {
                 type: `reference`,
                 to: [{ type: `person` }],
                 options: {
-                    filter: '$role in role',
-                    filterParams: {role: 'referee'}
+                    filter: ({
+                      document
+                    }) => {
+                      // Always make sure to check for document properties
+                      // before attempting to use them
+                      if (!document.gameDate) {
+                        return {
+                          filter: 'referee.isReferee'
+                        }
+                      }
+                
+                      return {
+                        filter: 'referee.isReferee && $year in referee.years',
+                        params: {
+                          year: document.gameDate.split('-')[0] + "-01-01"
+                        }
+                      }
+                    }
                   }
             }],
             required: true,

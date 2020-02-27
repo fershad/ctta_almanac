@@ -67,8 +67,24 @@ export default {
                 type: `reference`,
                 to: [{ type: `person` }],
                 options: {
-                    filter: '$role in role',
-                    filterParams: {role: 'support'}
+                    filter: ({
+                      document
+                    }) => {
+                      // Always make sure to check for document properties
+                      // before attempting to use them
+                      if (!document.year) {
+                        return {
+                          filter: 'support.isSupport'
+                        }
+                      }
+                    
+                      return {
+                        filter: 'support.isSupport && $year in support.years',
+                        params: {
+                          year: document.year.split('-')[0] + "-01-01"
+                        }
+                      }
+                    }
                   }
             }],
         },

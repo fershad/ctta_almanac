@@ -19,52 +19,181 @@ export default {
             required: true
         },
         {
-            name: `role`,
-            title: `Role`,
-            type: `array`,
-            of: [
-              {
-                type: 'string',
+          name: `player`,
+          title: `Player`,
+          type: `object`,
+          fields: [
+            {
+              name: `isPlayer`,
+              description: `Please select if this person is/has been a player.`,
+              type: `boolean`,
+            },
+            {
+              name: `years`,
+              title: `Years Active`,
+              description: `Select the years this person has been active this role. This is required for filtering later on.`,
+              type: `array`,
+              of: [{ 
+                type: `date`,
+                name: 'year',
+                title: 'Years',
                 options: {
-                  list: [
-                      {title: `Player`, value: `player`},
-                      {title: `Coach`, value: `coach`},
-                      {title: `Referee`, value: `referee`},
-                      {title: `Support`, value: `support`},
-                  ]
+                    dateFormat: `YYYY`
+                }
+            }],
+            options: {
+              editModal: `popover`,
+            },
+              required: true,
+            },
+            {
+              name: `division`,
+              title: `Teams`,
+              description: `For players only: Please select any teams they have played in.`,
+              type: `array`,
+              of: [{ type: `reference`, to: [{type: `division`}] }],
+              options: {
+                editModal: `popover`,
               },
-              }
-            ],
-            editModal: `popover`,
-            required: true,
-            validation: Rule => Rule.required()
+              required: true,
+            },
+          ]
         },
         {
-          name: `division`,
-          title: `Teams`,
-          type: `array`,
-          of: [{ type: `personTeam` }],
-          editModal: `popover`,
-          required: true,
+          name: `coach`,
+          title: `Coach`,
+          type: `object`,
+          fields: [
+            {
+              name: `isCoach`,
+              description: `Please select if this person is/has been a coach.`,
+              type: `boolean`,
+            },
+            {
+              name: `years`,
+              title: `Years Active`,
+              description: `Select the years this person has been active in this role. This is required for filtering later on.`,
+              type: `array`,
+              of: [{ 
+                type: `date`,
+                name: 'year',
+                title: 'Years',
+                options: {
+                    dateFormat: `YYYY`
+                }
+            }],
+            options: {
+              editModal: `popover`,
+            },
+              required: true,
+            },
+            {
+              name: `division`,
+              title: `Teams`,
+              description: `For players only: Please select any teams they have played in.`,
+              type: `array`,
+              of: [{ type: `reference`, to: [{type: `division`}] }],
+              options: {
+                editModal: `popover`,
+              },
+              required: true,
+            },
+          ]
+        },
+        {
+          name: `referee`,
+          title: `Referee`,
+          type: `object`,
+          fields: [
+            {
+              name: `isReferee`,
+              description: `Please select if this person is/has been a referee.`,
+              type: `boolean`,
+            },
+            {
+              name: `years`,
+              title: `Years Active`,
+              description: `Select the years this person has been active in this role. This is required for filtering later on.`,
+              type: `array`,
+              of: [{ 
+                type: `date`,
+                name: 'year',
+                title: 'Years',
+                options: {
+                    dateFormat: `YYYY`
+                }
+            }],
+            options: {
+              editModal: `popover`,
+            },
+              required: true,
+            },
+          ]
+        },
+        {
+          name: `support`,
+          title: `Support`,
+          type: `object`,
+          fields: [
+            {
+              name: `isSupport`,
+              description: `Please select if this person is/has been a player.`,
+              type: `boolean`,
+            },
+            {
+              name: `years`,
+              title: `Years Active`,
+              description: `Select the years this person has been active in this role. This is required for filtering later on.`,
+              type: `array`,
+              of: [{ 
+                type: `date`,
+                name: 'year',
+                title: 'Years',
+                options: {
+                    dateFormat: `YYYY`
+                }
+            }],
+            options: {
+              editModal: `popover`,
+            },
+              required: true,
+            },
+          ]
         },
     ],
     preview: {
         select: {
           title: 'name.en',
-          role: 'role',
+          player: 'player',
+          coach: 'coach',
+          referee: 'referee',
+          support: 'support',
           media: 'image'
         },
-        prepare ({title = 'No title', media, role}) {
+        prepare ({title = 'No title', media, player, coach, referee, support}) {
           return {
             title,
             media,
-            subtitle: role ? role && capitalize(role.join(', ')) : 'Missing role'
+            subtitle: (player || coach || referee || support ) ? role(player, coach, referee, support) : 'Missing role'
           }
         }
       }
 }
 
-const capitalize = (s) => {
+const role = (p, c, r, s) => {
+  let role = ''
+  
+  p ? role = role + 'player, ' : role = role
+  c ? role = role + 'coach, ' : role = role
+  r ? role = role + 'referee, ' : role = role
+  s ? role = role + 'support, ' : role = role
+  
+  return fixString(role)
+
+}
+
+const fixString = (s) => {
   if (typeof s !== 'string') return ''
-  return s.charAt(0).toUpperCase() + s.slice(1)
+  let r = s.charAt(0).toUpperCase() + s.slice(1)
+  return r.substring(0, r.length - 2)
 }
