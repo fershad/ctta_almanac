@@ -26,7 +26,7 @@ function generateTeam (data) {
           opponent,
           taipeiScore,
       },
-      "players": *[_type == "person" && "player" in role && references(^._id)] {
+      "players": *[_type == "person" && player.isPlayer && references(^._id)] {
         ...,
         'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
         "matches": *[_type == "gamesTeam" && references(^._id)]{

@@ -18,7 +18,7 @@ function generatePerson(data) {
   async function getPersonsData() {
     const filter = groq``
     const projection = groq`{
-      'players': *[_type == "person" && !(_id in path("drafts.**")) && "player" in role] {
+      'players': *[_type == "person" && !(_id in path("drafts.**")) && player.isPlayer] {
           ...,
           'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
           "matches": *[_type == "gamesTeam" && references(^._id)]{
@@ -32,7 +32,7 @@ function generatePerson(data) {
               taipeiScore
           }
         },
-        'coaches': *[_type == "person" && !(_id in path("drafts.**")) && "coach" in role] {
+        'coaches': *[_type == "person" && !(_id in path("drafts.**")) && coach.isCoach] {
             ...,
             'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
             "matches": *[_type == "gamesTeam" && references(^._id)]{
@@ -48,7 +48,7 @@ function generatePerson(data) {
               taipeiScore
             }
           },
-        'referees': *[_type == "person" && !(_id in path("drafts.**")) && "referee" in role] {
+        'referees': *[_type == "person" && !(_id in path("drafts.**")) && referee.isReferee] {
             ...,
             'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
             "matches": *[_type == "gamesReferee" && references(^._id)]{
@@ -67,7 +67,7 @@ function generatePerson(data) {
                 referee
             }
           },
-        'supporters': *[_type == "person" && !(_id in path("drafts.**")) && "support" in role] {
+        'supporters': *[_type == "person" && !(_id in path("drafts.**")) && support.isSupport] {
             ...,
             'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
             "events": *[_type == "event" && references(^._id)]{
