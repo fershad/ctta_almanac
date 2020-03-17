@@ -1,20 +1,30 @@
 
     <div class="data-table">
-        {% for player in players %}
-        {% unless player.matchCount == 0 %}
-        <div class="data person">
-            <div class="data-table-heading">
-                <div class="data-table-cell">Matches</div>
-                <div class="data-table-cell">Touchdowns</div>
-                <div class="data-table-cell">Assists*</div>
-            </div>
-            <div class="data-table-cell name"><a href="/{{ locale }}/players/{{ player.name.en | slug }}" class="link">{{ player.name[locale] }}</a></div>
-            <div class="data-table-row">
-                <div class="data-table-cell">{{ player.matchCount }}</div>
-                <div class="data-table-cell">{{ player.matchStats.touchdowns }}</div>
-                <div class="data-table-cell">{{ player.matchStats.assists }}</div>
-            </div>
-        </div>
-        {% endunless %}
-            {% endfor %}
+        <table>
+            <thead>
+                <tr>
+                    <th class="name"></th>
+                    <th class="matches">Matches</th>
+                    <th class="touchdowns">Touchdowns</th>
+                    <th class="assists">Assists*</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in players %}
+                {% unless player.matchCount == 0 %}
+                    <tr class="player">
+                        <td class="name"><a href="/{{ locale }}/players/{{ player.name.en | slug }}" class="link">{{ player.name[locale] }}</a></td>
+                        <td class="matches">{{ player.matchCount }}</td>
+                        <td class="touchdowns">{{ player.matchStats.touchdowns }}</td>
+                        <td class="assists">{{ player.matchStats.assists }}</td>
+                    </tr>
+                {% endunless %}
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="small">*Assists stat may not be complete due to limited data.</td>
+                </tr>
+            </tfoot>
+        </table>
     </div>

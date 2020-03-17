@@ -1,161 +1,15 @@
-@media all and (max-width: 767px) {
-
-    .data.team .data-table-cell.name, .data.team .data-table-cell.team-name {
-        border: none;
-        font-size: 1.25em;
-        padding: .4em 1em 0.4em $bw;
-    }
-
-    .data.event .data-table-cell.division, .data.details .data-table-cell.division, .data-table-cell.name {
-        border: none;
-        font-size: 1.25em;
-        padding: 0 0 0.5em $bw;
-    }
-
-    .data.event .data-table-cell.team-name,
-    .data.details .data-table-cell.team-name {
-      border: none;
-        font-size: 1.25em;
-        padding: 0 0 1em $bw;
-    }
-
-    .data.team .data-table-heading, .data.event .data-table-heading, .data.details .data-table-heading {
-      display: none;
-    }
-
-    .data-table-cell.event, .data-table-cell.date {
-      font-size: 0.8em;
-      padding: 0.2em 1em 0.4em 1.2em;
-      border: none;
-      background-color: $table-header-color;
-      color: $table-header-text-color;
-    }
-
-    .data-table-cell.score, .data-table-cell.result,
-    .data-table-row .data-table-cell,
-    .data-table-cell.teams, .data-table-cell.referees {
-      background-color: #FFFFFF;
-    }
-}
-
-@media all and (min-width: 768px) {
+@media all and (min-width: 600px) {
 
 #persons {
     width: 100%;
     display: grid;
     position: relative;
     grid-template-areas: "players players"
-                         "coaches ."
-                         "referees ."
+                         "coaches referees"
                          "support .";
     grid-template-columns: 1fr 1fr;
     column-gap: 60px;
     grid-column-gap: 60px;
-  }
-
-  .data-content {
-    width: 100%;
-  }
-
-  .data-table {
-    display: block;
-  }
-
-  .data,
-  .data-table-heading,
-  .data-table-row {
-    display: flex;
-  }
-
-  .data-table-heading > .data-table-cell,
-  .data-table-row > .data-table-cell,
-  .data-table-cell {
-      text-align: center;
-  }
-
-  .data-table-cell.name {
-    text-align: left;
-  }
-
-  .data {
-    display: grid;
-    margin-bottom: 0;
-  }
-
-  #player-stats .data.person {
-    grid-template-columns: 1fr 2fr;
-    grid-template-areas: ". header" "name stat";
-  }
-
-  .data.person { 
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas: ". header" "name stat";
-  }
-
-  .data.team {
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-areas: "header header header header header"
-                         "date event team score result";
-  }
-
-  .data.event {
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-areas: "header header header header header"
-                         "date division team score result";
-  }
-  
-  .data.details.refs {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: "header header header"
-                         "date division team"; 
-  }
-
-  .data.event.refs {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-areas: "header header header header"
-                         "date division team referees";
-  }
-
-  .data:not(:first-of-type) > .data-table-heading {
-    display: none;
-  }
-
-  .data-table .data:nth-of-type(odd) {
-      .name, .data-table-row, > .data-table-cell {
-        background-color: $table-row-odd-color;
-      }
-  }
-
-  .data-table .data:nth-of-type(even) {
-    .name, .data-table-row, > .data-table-cell {
-      background-color: $table-row-even-color;
-    }
-}
-
-  .data-table-cell {
-      border: none;
-  }
-
-  .data-table-cell.details {
-      width: 10em;
-  }
-
-  .data.team .versus {
-    display: none;
-  }
-
-  .match-details {
-    display: flex;
-    flex-direction: row;
-  
-    .summary {
-      margin-right: 2em;
-      width: 400px;
-    }
-
-    .data-table {
-        width: 100%;
-    }
   }
 }
 
@@ -167,7 +21,16 @@
     grid-template-areas: "players coaches"
                          "players referees"
                          "players support";
-    grid-template-columns: 1fr 500px;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 60px;
+    grid-column-gap: 60px;
+  }
+}
+
+@media all and (min-width: 1280px) {
+  #teams .team {
+    grid-template-areas: "matches players";
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 60px;
     grid-column-gap: 60px;
   }

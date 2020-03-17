@@ -6,10 +6,11 @@
   "scripts": {
     "build": "npx eleventy",
     "watch": "npx eleventy --watch",
-    "dev": "npm run watch",
+    "dev": "npm run watch-serve",
     "now-build": "npm run build",
     "debug": "DEBUG=* npx eleventy",
-    "postbuild": "gulp css js"
+    "postbuild": "gulp css js",
+    "watch-serve": "npx eleventy --watch --serve --quiet"
   },
   "author": "Fershad Digital Ltd.",
   "license": "ISC",

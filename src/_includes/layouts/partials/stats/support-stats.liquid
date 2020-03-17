@@ -1,16 +1,23 @@
 <div id="support-stats">
     <h2 class="h2 loud">Support Team</h2>
     <div class="data-table">
-        {% for person in persons.supporters %}
-        <div class="data person">
-                <div class="data-table-heading">
-                    <div class="data-table-cell">Events</div>
-                </div>
-                <div class="data-table-cell name"><a href="/{{ locale }}/supporters/{{ person.name.en | slug }}" class="link">{{ person.name[locale] }}</a></div>
-                <div class="data-table-row">
-                    <div class="data-table-cell">{{ person.eventCount }}</div>
-                </div>
-            </div>
+        <table>
+            <thead>
+                <tr>
+                    <th class="name"></th>
+                    <th class="matches">Events</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for person in persons.supporters %}
+            {% unless person.eventCount == 0 %}
+                <tr>
+                    <td class="name"><a href="/{{ locale }}/supporters/{{ person.name.en | slug }}" class="link">{{ person.name[locale] }}</a></td>
+                    <td class="events">{{ person.eventCount }}</td>
+                </tr>
+            {% endunless %}
             {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>

@@ -1,16 +1,23 @@
 <div id="coach-stats">
     <h2 class="h2 loud">Coaches</h2>
     <div class="data-table">
-        {% for coach in persons.coaches %}
-        <div class="data person">
-                <div class="data-table-heading">
-                    <div class="data-table-cell">Matches</div>
-                </div>
-                <div class="data-table-cell name"><a href="/{{ locale }}/coaches/{{ coach.name.en | slug }}" class="link">{{ coach.name[locale] }}</a></div>
-                <div class="data-table-row">
-                    <div class="data-table-cell">{{ coach.matchCount }}</div>
-                </div>
-            </div>
+        <table>
+            <thead>
+                <tr>
+                    <th class="name"></th>
+                    <th class="matches">Matches</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for coach in persons.coaches %}
+            {% unless coach.matchCount == 0 %}
+                <tr>
+                    <td class="name"><a href="/{{ locale }}/coaches/{{ coach.name.en | slug }}" class="link">{{ coach.name[locale] }}</a></td>
+                    <td class="matches">{{ coach.matchCount }}</td>
+                </tr>
+            {% endunless %}
             {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>

@@ -6,11 +6,17 @@
   --menu-width: 280px;
 }
 
+
+
 // Mixins
 @mixin unstyled-list {
   list-style: none;
   text-align: center;
   padding: 0;
+}
+
+@mixin table-cell-padding {
+  padding: 0.5rem 1rem;
 }
 
 body,
@@ -33,6 +39,10 @@ html {
 
 .center {
   text-align: center;
+}
+
+.grid {
+  display: grid;
 }
 
 #page-heading {
@@ -126,139 +136,71 @@ html {
     }
 }
 
-/* Variables
-================================== */
-$bw: 1.5px; // border width
+#teams {
+  .matches {
+    grid-area: matches;
+  }
 
-/* Tables
-================================== */
+  .players {
+    grid-area: players;
+  }
+}
+
 .data-table {
-  margin: 0 0 3em 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
-  grid-column-gap: 1.2em;
-  column-gap: 1.2em;
+  overflow-y: auto;
+  width: 100%;
+  position: relative;
 }
 
-.data {
-  margin-bottom: 2em;
-  display: grid;
-  column-gap: 0;
+.data-table table {
+  width: 100%;
+  overflow: hidden;
+  table-layout: fixed;
 }
 
-.data.person {
-  grid-template-areas:
-    "name name"
-    "header stat"
-    "header stat"
-    "header stat";
-  grid-template-columns: 60% 40%;
-}
-
-.data.team {
-  grid-template-areas: "team team"
-                       "event event"
-                       "date date"
-                       "score result";
-  grid-template-columns: 2fr 1fr;
-}
-
-.data.event {
-  grid-template-areas: "division division"
-                       "team team"
-                       "date date"
-                       "score result";
-  grid-template-columns: 2fr 1fr;
-}
-
-.data.event.refs {
-  grid-template-areas: "division"
-                       "date"
-                       "team"
-                       "referees";
-  grid-template-columns: 1fr;
-}
-
-.data.details.refs {
-  grid-template-areas: "division"
-                       "date"
-                       "team";
-  grid-template-columns: 1fr;
-}
-
-.match-details {
-  display: flex;
-  flex-direction: column;
-
-  .summary {
-    margin-bottom: 2em;
+.data-table table > tbody tr:nth-child(odd) {
+  td {
+    background: $table-row-odd-color;
   }
 }
 
-.data-table-cell {
-  &.division {
-    grid-area: division;
-  }
-  &.result {
-    grid-area: result;
-  }
-  &.score {
-    grid-area: score;
-  }
-  &.date {
-    grid-area: date;
-  }
-  &.name {
-    grid-area: name;
-    background-color: $page-background;
-  }
-  &.team-name, &.teams {
-    grid-area: team;
-  }
-  &.event {
-    grid-area: event;
-  }
-  &.referees {
-    grid-area: referees;
-
-    .link, a {
-      display: block;
-    }
+.data-table table > tbody tr:nth-child(even) {
+  td {
+    background: $table-row-even-color;
   }
 }
 
-
-.data-table-heading {
-  grid-area: header;
+.data-table table > thead > tr th {
+  @include table-cell-padding();
   background-color: $table-header-color;
   color: $table-header-text-color;
+  text-align: center;
 }
 
-.data-table-heading > .data-table-cell {
-    font-weight: 900;
+.data-table .name {
+  width: 150px;
+  @include table-cell-padding();
 }
 
-.data-table-row {
-  grid-area: stat;
+.data-table {
+  .matches, .touchdowns, .assists, .events, .date, .event, .opponent, .score, .result, .division, .refTeams, .referees {
+    min-width: 80px;
+    width: min-content;
+  }
 }
 
-.data.team > .data-table-row {
-  grid-area: rows;
+.data-table table > tbody > tr {
+  .matches, .touchdowns, .assists, .events, .date, .event, .opponent, .score, .result, .division, .refTeams, .referees {
+    @include table-cell-padding();
+    text-align: center;
+  }
 }
 
-.data-table-row > .data-table-cell {
-    text-align: right;
-}
-
-.data-table-cell {
-  box-sizing: border-box;
-  flex-grow: 1;
-  width: 100%; // Default to full width
-  padding: 0.8em 1em;
-  overflow: hidden; // Or flex might break
-  list-style: none;
-  border: solid $bw white;
+#teams .team {
+  grid-template-columns: 1fr;
+  grid-template-areas: "matches"
+                       "players";
+  width: 100%;
 }
 
 @import 'variables/media'
