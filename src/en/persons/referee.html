@@ -11,13 +11,24 @@ permalink: /{{ locale }}/referees/{{ referee.name.en | slug }}/index.html
 ---
 <div class="referee-details">
   <div class="summary">
-<h2>{{ referee.name[locale] }}</h2>
-<div>
-  <h3>Summary</h3>
-  <p>Matches: {{ referee.matchCount }}</p>
-</div>
+    <picture>
+      <source 
+        media="(min-width: 650px)" 
+        srcset="{{ referee.300x }},
+                {{ referee.600x }} 2x">
+      <img 
+        src="{{ referee.150x }}" 
+        srcset="{{ referee.300x }} 2x"
+        alt="Picture of CTTA Referee {{ referee.name[locale] }}">
+    </picture>
+    <div class="details">
+      <h2 class="h2">{{ referee.name[locale] }}</h2>
+      <p class="summary-sub-heading loud">FIT Internationals Officated: {{ referee.matchCount }}</p>
+    </div>
+  </div>
 </div>
 
+<h3 class="h3">Matches Officiated</h3>
 {% assign matches = referee.matches %}
 <div class="data-table">
   <div class="referees data-table">
