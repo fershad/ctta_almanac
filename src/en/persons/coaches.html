@@ -25,14 +25,24 @@ permalink: /{{ locale }}/coaches/{{ coach.name.en | slug }}/index.html
 
 <div class="coach-details">
   <div class="summary">
-<h2>{{ coach.name[locale] }}</h2>
-<div>
-  <h3>Summary</h3>
-  <p>Matches: {{ coach.matchCount }}</p>
-  <p>Wins: {{ wins }} | Draws: {{ draws }} | Losses: {{ losses }}</p>
-</div>
-</div>
+    <picture>
+      <source 
+        media="(min-width: 650px)" 
+        srcset="{{ coach.300x }},
+                {{ coach.600x }} 2x">
+      <img 
+        src="{{ coach.150x }}" 
+        srcset="{{ coach.300x }} 2x"
+        alt="Picture of CTTA Coach {{ coach.name[locale] }}">
+    </picture>
+    <div class="details">
+      <h2 class="h2">{{ coach.name[locale] }}</h2>
+      <p class="summary-sub-heading loud">FIT Internationals Coached: {{ coach.matchCount }}</p>
+      <p class="summary-sub-heading">Wins: {{ wins }} | Draws: {{ draws }} | Losses: {{ losses }}</p>
+    </div>
+  </div>
 
+<h3 class="h3">Matches Coached</h3>
 {% assign matches = coach.matches %}
 {% include './layouts/partials/stats/match-stats' %}
 </div>
