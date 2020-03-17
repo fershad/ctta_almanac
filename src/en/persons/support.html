@@ -11,15 +11,22 @@ permalink: /{{ locale }}/supporters/{{ support.name.en | slug }}/index.html
 ---
 <div class="support-details">
   <div class="summary">
-<h2>{{ support.name[locale] }}</h2>
-<div>
-  <h3>Summary</h3>
-  <p>Events: {{ support.eventCount }}</p>
-</div>
-</div>
-<h3>
-  Events Attended:
-</h3>
+    <picture>
+      <source 
+        media="(min-width: 650px)" 
+        srcset="{{ support.300x }},
+                {{ support.600x }} 2x">
+      <img 
+        src="{{ support.150x }}" 
+        srcset="{{ support.300x }} 2x"
+        alt="Picture of CTTA Support Staff member {{ support.name[locale] }}">
+    </picture>
+    <div class="details">
+      <h2 class="h2">{{ support.name[locale] }}</h2>
+      <p class="summary-sub-heading loud">Events Attended: {{ support.eventCount }}</p>
+    </div>
+  </div>
+<h3 class="h3">Events</h3>
 <ul class="data-table">
   {% for event in support.events %}
     <li>{{ event.name[locale] }}</li>

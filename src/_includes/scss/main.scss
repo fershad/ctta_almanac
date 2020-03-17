@@ -216,21 +216,33 @@ html {
   margin-bottom: 3rem;
 }
 
-.event-title {
+.event-title, .support-details .summary {
   display: flex;
   column-gap: 1.5rem;
 }
 
-.event-title .type {
+.support-details .summary {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.summary .details {
+  width: 100%;
+}
+
+.event-title .type, .summary-sub-heading {
   margin-top: -1.5em;
   font-variant: all-small-caps;
   letter-spacing: 1.1px;
 }
 
-.event-title img, .event-title picture {
-  max-width: 150px;
-  width: 100%;
-  height: auto;
+.event-title, .support-details .summary {
+  img, picture {
+    max-width: 150px;
+    width: 100%;
+    height: auto;
+  }
 }
 
 @import 'variables/media'
