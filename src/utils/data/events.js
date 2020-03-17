@@ -1,13 +1,17 @@
 const groq = require('groq')
 const client = require('../sanityClient')
 const generateMatches = require('../generators/generateMatches')
+const images = require('../generators/generateImages')
 
 function generateEvent (data) {
 
     return {
       ...data,
       matches: data.matches.map(generateMatches),
-      referees: generateReferees(data.referees)
+      referees: generateReferees(data.referees),
+      '75x': images(data.image).width(75).height(75).auto("format").url(),
+      '150x': images(data.image).width(150).height(150).auto("format").url(),
+      '300x': images(data.image).width(300).height(300).auto("format").url()
     }
   }
 

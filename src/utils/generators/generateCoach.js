@@ -1,4 +1,5 @@
 const generateMatches = require('./generateMatches')
+const images = require('./generateImages')
 
 function generateCoach (data) {
     return {

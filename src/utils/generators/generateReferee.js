@@ -1,4 +1,5 @@
 const countMatches = require('./countMatches')
+const images = require('./generateImages')
 
 function generateReferee (data) {
     return {

@@ -1,6 +1,7 @@
 const countMatches = require('./countMatches')
 const getMatchStats = require('./generateStats')
 const generateMatches = require('./generateMatches')
+const images = require('./generateImages')
 
 function generatePlayer (data) {
     return {
