@@ -17,8 +17,8 @@
     </ul>
 
     <ul id="menu">
-        <li class="menu-link h5"><a href="/{{ locale }}/persons">Persons</a></li>
-        <li class="menu-link h5"><a href="/{{ locale }}/teams">Teams</a></li>
-        <li class="menu-link h5"><a href="/{{ locale }}/events">Events</a></li>
+        <li class="menu-link h5"><a href="/{{ locale }}/persons">{{ localized[locale].header.persons | capitalize }}</a></li>
+        <li class="menu-link h5"><a href="/{{ locale }}/teams">{{ localized[locale].header.teams | capitalize }}</a></li>
+        <li class="menu-link h5"><a href="/{{ locale }}/events">{{ localized[locale].header.events | capitalize }}</a></li>
     </ul>
 </div>

@@ -5,7 +5,7 @@
                 <h2 class="h2 loud name">{{ team.name[locale] }}</h2>
                 {% unless team.matches.size == 0 %}
                 <div class="matches">
-                    <h3 class="h3">Matches</h3>
+                    <h3 class="h3">{{ localized[locale].plural.match | capitalize }}</h3>
                     {% assign matches = team.matches %}
                     {% include './layouts/partials/stats/match-stats' %}
                 </div>
@@ -13,7 +13,7 @@
     
                 {% unless team.players.size == 0 %}
                 <div class="players">
-                    <h3 class="h3">Players</h3>
+                    <h3 class="h3">{{ localized[locale].plural.player | capitalize }}</h3>
                     {% assign players = team.players %}
                     {% include './layouts/partials/stats/player-stats' %}
                 </div>

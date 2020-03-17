@@ -24,16 +24,16 @@
                 </div>
             </div>
             {% unless event.matches.size == 0 %}
-            <h3 class="h3">Matches</h3>
+            <h3 class="h3">{{ localized[locale].plural.match | capitalize }}</h3>
             <div class="matches data-table">
                 <table>
                     <thead>
                         <tr>
-                            <th class="date">Date</th>
-                            <th class="division">Division</th>
-                            <th class="opponent">Opponent</th>
-                            <th class="score">Score</th>
-                            <th class="result">Result</th>
+                            <th class="date">{{ localized[locale].table.date | capitalize }}</th>
+                            <th class="division">{{ localized[locale].table.division | capitalize }}</th>
+                            <th class="opponent">{{ localized[locale].table.opponent | capitalize }}</th>
+                            <th class="score">{{ localized[locale].table.score | capitalize }}</th>
+                            <th class="result">{{ localized[locale].table.result | capitalize }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,16 +51,16 @@
             </div>
             {% endunless %}
             {% unless event.referees.event.size == 0 %}
-                <h3 class="h3">Referees</h3>
+                <h3 class="h3">{{ localized[locale].plural.referee | capitalize }}</h3>
                 <div class="referees data-table">
                     <table>
                         <thead>
                             <tr>
-                                <th class="date">Date</th>
-                                <th class="division">Division</th>
-                                <th class="refTeams">Teams</th>
-                                <th class="score">Score</th>
-                                <th class="referees">Referees</th>
+                                <th class="date">{{ localized[locale].table.date | capitalize }}</th>
+                                <th class="division">{{ localized[locale].table.division | capitalize }}</th>
+                                <th class="refTeams">{{ localized[locale].table.teams | capitalize }}</th>
+                                <th class="score">{{ localized[locale].table.score | capitalize }}</th>
+                                <th class="referees">{{ localized[locale].plural.referee | capitalize }}</th>
                             </tr>
                         </thead>
                         <tbody>

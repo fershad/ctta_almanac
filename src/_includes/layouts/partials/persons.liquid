@@ -1,6 +1,6 @@
 <div class="holder" id="persons">
         <div id="player-stats">
-            <h2 class="h2 loud">Players</h2>
+            <h2 class="h2 loud">{{ localized[locale].plural.player | capitalize }}</h2>
             {% assign players = persons.players %}    
             {% include './layouts/partials/stats/player-stats' %}
         </div>

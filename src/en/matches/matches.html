@@ -14,7 +14,7 @@ permalink: "/{{ locale }}/events/{{ match.event.name.en | slug }}/matches/{{ mat
   <div class="summary">
     <h2 class="h2">{{ match.division.name[locale] }} v. {{ match.opponent.name[locale] }}</h2> 
     <p class="summary-sub-heading loud">{{ match.event.name[locale] }}</p>
-    <p class="summary-sub-heading">Result: {{ match.taipeiScore }} - {{ match.opponent.score }} ({{ match.result }})</p>
+    <p class="summary-sub-heading">{{ localized[locale].table.result | capitalize }}: {{ match.taipeiScore }} - {{ match.opponent.score }} ({{ match.result }})</p>
   </div>
 
   <div class="data-table">
@@ -22,8 +22,8 @@ permalink: "/{{ locale }}/events/{{ match.event.name.en | slug }}/matches/{{ mat
         <thead>
             <tr>
                 <th class="name"></th>
-                <th class="touchdowns">Touchdowns</th>
-                <th class="assists">Assists*</th>
+                <th class="touchdowns">{{ localized[locale].plural.touchdowns | capitalize }}</th>
+                <th class="assists">{{ localized[locale].plural.assist | capitalize }}*</th>
             </tr>
         </thead>
         <tbody>
@@ -49,7 +49,7 @@ permalink: "/{{ locale }}/events/{{ match.event.name.en | slug }}/matches/{{ mat
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="4" class="small">*Assists stat may not be complete due to limited data.</td>
+                <td colspan="4" class="small">*{{ localized[locale].table.assistNote | capitalize }}</td>
             </tr>
         </tfoot>
     </table>

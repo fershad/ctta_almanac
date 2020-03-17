@@ -4,9 +4,9 @@
             <thead>
                 <tr>
                     <th class="name"></th>
-                    <th class="matches">Matches</th>
-                    <th class="touchdowns">Touchdowns</th>
-                    <th class="assists">Assists*</th>
+                    <th class="matches">{{ localized[locale].plural.match | capitalize}}</th>
+                    <th class="touchdowns">{{ localized[locale].plural.touchdown | capitalize}}</th>
+                    <th class="assists">{{ localized[locale].plural.assist | capitalize}}*</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,7 +23,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="4" class="small">*Assists stat may not be complete due to limited data.</td>
+                    <td colspan="4" class="small">{{ localized[locale].table.assistsNote }}</td>
                 </tr>
             </tfoot>
         </table>
