@@ -39,7 +39,8 @@
 
 @media all and (min-width: 1280px) {
   #teams .team {
-    grid-template-areas: "matches players";
+    grid-template-areas:  "name ."
+                          "matches players";
     grid-template-columns: repeat(2, 1fr);
     column-gap: 60px;
     grid-column-gap: 60px;

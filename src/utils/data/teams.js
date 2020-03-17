@@ -5,7 +5,6 @@ const generateMatches = require('../generators/generateMatches')
 
 
 function generateTeam (data) {
-
     return {
       ...data,
       matches: data.matches.map(generateMatches),

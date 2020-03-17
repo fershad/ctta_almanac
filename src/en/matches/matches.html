@@ -12,9 +12,9 @@ permalink: "/{{ locale }}/events/{{ match.event.name.en | slug }}/matches/{{ mat
 
 <div class="match-details">
   <div class="summary">
-    <h2 class="h2">{{ match.division.name[locale] }} v. <br>{{ match.opponent.name[locale] }}</h2> 
-    <p class="loud">{{ match.event.name[locale] }}</p>
-    <p>Result: {{ match.taipeiScore }} - {{ match.opponent.score }} ({{ match.result }})</p>
+    <h2 class="h2">{{ match.division.name[locale] }} v. {{ match.opponent.name[locale] }}</h2> 
+    <p class="summary-sub-heading loud">{{ match.event.name[locale] }}</p>
+    <p class="summary-sub-heading">Result: {{ match.taipeiScore }} - {{ match.opponent.score }} ({{ match.result }})</p>
   </div>
 
   <div class="data-table">

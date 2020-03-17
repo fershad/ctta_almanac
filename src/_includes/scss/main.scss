@@ -6,8 +6,6 @@
   --menu-width: 280px;
 }
 
-
-
 // Mixins
 @mixin unstyled-list {
   list-style: none;
@@ -93,7 +91,9 @@ html {
 }
 
 #menu .menu-link {
-  a, a:visited {
+
+  a,
+  a:visited {
     color: inherit;
   }
 }
@@ -119,21 +119,21 @@ html {
     "referees"
     "support";
 
-    #player-stats {
-      grid-area: players;
-    }
-    
-    #ref-stats {
-      grid-area: referees;
-    }
-    
-    #coaches-stats {
-      grid-area: coaches;
-    }
-    
-    #support-stats {
-      grid-area: support;
-    }
+  #player-stats {
+    grid-area: players;
+  }
+
+  #ref-stats {
+    grid-area: referees;
+  }
+
+  #coaches-stats {
+    grid-area: coaches;
+  }
+
+  #support-stats {
+    grid-area: support;
+  }
 }
 
 #teams {
@@ -143,6 +143,10 @@ html {
 
   .players {
     grid-area: players;
+  }
+  
+  .name {
+    grid-area: name;
   }
 }
 
@@ -158,19 +162,19 @@ html {
   table-layout: fixed;
 }
 
-.data-table table > tbody tr:nth-child(odd) {
+.data-table table>tbody tr:nth-child(odd) {
   td {
     background: $table-row-odd-color;
   }
 }
 
-.data-table table > tbody tr:nth-child(even) {
+.data-table table>tbody tr:nth-child(even) {
   td {
     background: $table-row-even-color;
   }
 }
 
-.data-table table > thead > tr th {
+.data-table table>thead>tr th {
   @include table-cell-padding();
   background-color: $table-header-color;
   color: $table-header-text-color;
@@ -183,23 +187,47 @@ html {
 }
 
 .data-table {
-  .matches, .touchdowns, .assists, .events, .date, .event, .opponent, .score, .result, .division, .refTeams, .referees {
+
+  .matches,
+  .touchdowns,
+  .assists,
+  .events,
+  .date,
+  .event,
+  .opponent,
+  .score,
+  .result,
+  .division,
+  .refTeams,
+  .referees {
     min-width: 80px;
     width: min-content;
   }
 }
 
-.data-table table > tbody > tr {
-  .matches, .touchdowns, .assists, .events, .date, .event, .opponent, .score, .result, .division, .refTeams, .referees {
+.data-table table>tbody>tr {
+
+  .matches,
+  .touchdowns,
+  .assists,
+  .events,
+  .date,
+  .event,
+  .opponent,
+  .score,
+  .result,
+  .division,
+  .refTeams,
+  .referees {
     @include table-cell-padding();
     text-align: center;
   }
 }
 
-.data-table table > tfoot {
+.data-table table>tfoot {
   background-color: $table-footer-color;
   color: $footer-text-color;
-  
+
   td {
     @include table-cell-padding();
   }
@@ -207,8 +235,10 @@ html {
 
 #teams .team {
   grid-template-columns: 1fr;
-  grid-template-areas: "matches"
-                       "players";
+  grid-template-areas:
+    "name"
+    "matches"
+    "players";
   width: 100%;
 }
 
@@ -221,7 +251,10 @@ html {
   column-gap: 1.5rem;
 }
 
-.support-details, .referee-details, .coach-details, .player-details {
+.support-details,
+.referee-details,
+.coach-details,
+.player-details {
   .summary {
     display: flex;
     column-gap: 1.5rem;
@@ -235,28 +268,54 @@ html {
   width: 100%;
 }
 
-.event-title .type, .summary-sub-heading {
+.event-title .type,
+.summary-sub-heading {
   margin-top: -1.5em;
   font-variant: all-small-caps;
   letter-spacing: 1.1px;
 }
 
 .event-title {
-  img, picture {
+
+  img,
+  picture {
     max-width: 150px;
     width: 100%;
     height: auto;
   }
 }
 
-.support-details, .referee-details, .coach-details, .player-details {
+.support-details,
+.referee-details,
+.coach-details,
+.player-details {
   .summary {
-    img, picture {
+
+    img,
+    picture {
       max-width: 150px;
       width: 100%;
       height: auto;
+      max-height: 150px;
+      position: relative;
+      border-radius: 25%;
     }
+
+    // img::after {
+    //   content: "";
+    //   border: 5px red solid;
+    //   position: absolute;
+    //   height: 100%;
+    //   width: 100%;
+    //   top: 0;
+    //   left: 0;
+    //   right: 0;
+    //   bottom: 0;
+    //   z-index: 1;
+    //   margin: 0;
+    //   padding: 0;
+    // }
   }
 }
 
-@import 'variables/media'
+@import "variables/media";

@@ -2,18 +2,22 @@
         {% for team in teams %}
             {% unless team.matches.size == 0 and team.players.size == 0 %}
             <div class="grid team">
-                <h2 class="h2 loud">{{ team.name[locale] }}</h2>
+                <h2 class="h2 loud name">{{ team.name[locale] }}</h2>
+                {% unless team.matches.size == 0 %}
                 <div class="matches">
                     <h3 class="h3">Matches</h3>
                     {% assign matches = team.matches %}
                     {% include './layouts/partials/stats/match-stats' %}
                 </div>
+                {% endunless %}
     
+                {% unless team.players.size == 0 %}
                 <div class="players">
                     <h3 class="h3">Players</h3>
                     {% assign players = team.players %}
                     {% include './layouts/partials/stats/player-stats' %}
                 </div>
+                {% endunless %}
             </div>
             {% endunless %}
         {% endfor %}
