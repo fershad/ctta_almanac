@@ -1,9 +1,12 @@
+// const {flag} = require('country-emoji');
+
 const generateMatches = (match) => {
     let matchData
     const result = getResult(match.opponent.score, match.taipeiScore)
 
     matchData = {
         ...match,
+        // flag: flag(match.opponent.name.en),
         "result": result
     }
 
