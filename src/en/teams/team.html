@@ -10,3 +10,19 @@ pagination:
 permalink: /{{ locale }}/teams/{{ team.name.en | slug }}/index.html
 ---
 <h2>{{ team.name[locale] }}</h2> 
+{% unless team.matches.size == 0 and team.players.size == 0 %}
+    <div class="grid team">
+        <h2 class="h2 loud">{{ team.name[locale] }}</h2>
+        <div class="matches">
+            <h3 class="h3">Matches</h3>
+            {% assign matches = team.matches %}
+            {% include './layouts/partials/stats/match-stats' %}
+        </div>
+
+        <div class="players">
+            <h3 class="h3">Players</h3>
+            {% assign players = team.players %}
+            {% include './layouts/partials/stats/player-stats' %}
+        </div>
+    </div>
+{% endunless %}

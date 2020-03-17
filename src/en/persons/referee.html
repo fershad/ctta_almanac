@@ -20,17 +20,26 @@ permalink: /{{ locale }}/referees/{{ referee.name.en | slug }}/index.html
 
 {% assign matches = referee.matches %}
 <div class="data-table">
+  <div class="referees data-table">
+    <table>
+        <thead>
+            <tr>
+                <th class="date">Date</th>
+                <th class="division">Division</th>
+                <th class="refTeams">Teams</th>
+                <th class="score">Score</th>
+                <th class="referees">Referees</th>
+            </tr>
+        </thead>
+        <tbody>
             {% for match in matches %}
-            <div class="data details refs">
-                <div class="data-table-heading">
-                    <div class="data-table-cell">Date</div>
-                    <div class="data-table-cell">Division</div>
-                    <div class="data-table-cell">Teams (Score)</div>
-                </div>
-                    <div class="data-table-cell date">{{ match.gameDate | date: "%d %b %Y" }}</div>
-                    <div class="data-table-cell division">{{ match.division[locale] }}</div>
-                    <div class="data-table-cell teams">{{ match.homeTeam.name[locale] }} v. {{ match.awayTeam.name[locale] }} ({{ match.homeTeam.score }} v. {{ match.awayTeam.score }})</a></div>
-            </div>
+              <tr>
+                <td class="date">{{ match.gameDate | date: "%d %b %Y" }}</td>
+                <td class="division">{{ match.division[locale] }}</td>
+                <td class="refTeams">{{ match.homeTeam.name[locale] }} v. {{ match.awayTeam.name[locale] }}</td>
+                <td class="score">{{ match.homeTeam.score }} v. {{ match.awayTeam.score }}</td>
+            </tr>
             {% endfor %}
-            </div>
+        </tbody>
+    </table>
 </div>

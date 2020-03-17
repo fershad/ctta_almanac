@@ -16,28 +16,30 @@ permalink: "/{{ locale }}/events/{{ match.event.name.en | slug }}/matches/{{ mat
     <p class="loud">{{ match.event.name[locale] }}</p>
     <p>Result: {{ match.taipeiScore }} - {{ match.opponent.score }} ({{ match.result }})</p>
   </div>
-  
+
   <div class="data-table">
-    {% for player in match.players %}
-    <div class="data person">
-      <div class="data-table-heading">
-          <div class="data-table-cell">Touchdowns</div>
-          <div class="data-table-cell">Assists*</div>
-      </div>
-      <div class="data-table-cell name"><a href="/{{ locale }}/players/{{ player.playerName.name.en | slug }}" class="link">{{ player.playerName.name[locale] }}</a></div>
-      <div class="data-table-row">
-          <div class="data-table-cell">{% if player.touchdowns %}
-            {{ player.touchdowns }}
-            {% else %}
-              -
-          {% endif %}</div>
-          <div class="data-table-cell">{% if player.assists %}
-            {{ player.assists }}
-            {% else %}
-              -
-          {% endif %}</div>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
+    <table>
+        <thead>
+            <tr>
+                <th class="name"></th>
+                <th class="touchdowns">Touchdowns</th>
+                <th class="assists">Assists*</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for player in match.players %}
+                <tr class="player">
+                    <td class="name"><a href="/{{ locale }}/players/{{ player.name.en | slug }}" class="link">{{ player.name[locale] }}</a></td>
+                    <td class="touchdowns">{{ player.touchdowns }}</td>
+                    <td class="assists">{{ player.assists }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="small">*Assists stat may not be complete due to limited data.</td>
+            </tr>
+        </tfoot>
+    </table>
 </div>
+  
