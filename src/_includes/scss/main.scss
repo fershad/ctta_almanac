@@ -67,8 +67,8 @@ html {
 }
 
 #menu {
-  margin: 1.5rem auto;
-  max-width: var(--menu-width);
+  margin: 0.2rem auto 80px auto;
+  justify-content: space-evenly;
   width: 100%;
   display: inline-flex;
 }
@@ -79,37 +79,25 @@ html {
 }
 
 #menu .menu-link {
-  max-width: calc(var(--menu-width) / 3);
-  width: 100%;
-  border: 1px solid $accent-color;
   cursor: pointer;
 }
 
-#menu .menu-link.active {
-  background-color: $accent-color;
-  color: $page-background;
-}
-
 #menu .menu-link {
-
   a,
   a:visited {
-    color: inherit;
+    font-weight: 900;
+    font-size: 1.25em;
+    color: $link-color;
+    border-bottom: 4px solid $accent-color;
+    border-bottom-width: 100%;
+    text-decoration: none;
+    transition: all 0.4s ease-in;
   }
-}
 
-#menu .menu-link:not(:last-of-type) {
-  border-right: none;
-}
-
-#menu .menu-link:first-of-type {
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
-}
-
-#menu .menu-link:last-of-type {
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
+  a:hover,
+  a:focus {
+    border-bottom-width: 30%;
+  }
 }
 
 #persons {
@@ -144,7 +132,7 @@ html {
   .players {
     grid-area: players;
   }
-  
+
   .name {
     grid-area: name;
   }
@@ -162,19 +150,19 @@ html {
   table-layout: fixed;
 }
 
-.data-table table>tbody tr:nth-child(odd) {
+.data-table table > tbody tr:nth-child(odd) {
   td {
     background: $table-row-odd-color;
   }
 }
 
-.data-table table>tbody tr:nth-child(even) {
+.data-table table > tbody tr:nth-child(even) {
   td {
     background: $table-row-even-color;
   }
 }
 
-.data-table table>thead>tr th {
+.data-table table > thead > tr th {
   @include table-cell-padding();
   background-color: $table-header-color;
   color: $table-header-text-color;
@@ -187,7 +175,6 @@ html {
 }
 
 .data-table {
-
   .matches,
   .touchdowns,
   .assists,
@@ -205,8 +192,7 @@ html {
   }
 }
 
-.data-table table>tbody>tr {
-
+.data-table table > tbody > tr {
   .matches,
   .touchdowns,
   .assists,
@@ -224,7 +210,7 @@ html {
   }
 }
 
-.data-table table>tfoot {
+.data-table table > tfoot {
   background-color: $table-footer-color;
   color: $footer-text-color;
 
@@ -242,13 +228,21 @@ html {
   width: 100%;
 }
 
-.event {
-  margin-bottom: 3rem;
+.team, .event {
+  margin: 2rem 0 4rem 0;
+  position: relative;
+}
+
+.team .h3 {
+  margin-top: 0;
 }
 
 .event-title {
   display: flex;
   column-gap: 1.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .support-details,
@@ -276,13 +270,15 @@ html {
 }
 
 .event-title {
-
   img,
-  picture {
-    max-width: 150px;
-    width: 100%;
-    height: auto;
-  }
+    picture {
+      max-width: 150px;
+      width: 100%;
+      height: auto;
+      max-height: 150px;
+      position: relative;
+      border-radius: 25%;
+    }
 }
 
 .support-details,
@@ -290,7 +286,6 @@ html {
 .coach-details,
 .player-details {
   .summary {
-
     img,
     picture {
       max-width: 150px;
@@ -312,9 +307,13 @@ footer {
   left: 0;
   min-height: 120px;
   padding: 1rem 0.5rem;
-  
+  margin-top: 60px;
+
   p {
-    a.link, a.link:hover, a.link:visited, a.link:focus {
+    a.link,
+    a.link:hover,
+    a.link:visited,
+    a.link:focus {
       color: $footer-text-color !important;
       display: inline-block;
     }

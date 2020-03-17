@@ -4,7 +4,7 @@
 
     <!-- Language Selector -->
     <!-- TODO: Will need to bring in TranslationKey once subpages are created. -->
-    <ul class="small" id="lang-selector">
+    <ul class="" id="lang-selector">
         {% if locale == 'en' %}
             <li class="loud bold">English</li>
             <span class="h5">/</span>
@@ -17,8 +17,8 @@
     </ul>
 
     <ul id="menu">
-        <li class="menu-link"><a href="/{{ locale }}/persons">Persons</a></li>
-        <li class="menu-link"><a href="/{{ locale }}/teams">Teams</a></li>
-        <li class="menu-link"><a href="/{{ locale }}/events">Events</a></li>
+        <li class="menu-link h5"><a href="/{{ locale }}/persons">Persons</a></li>
+        <li class="menu-link h5"><a href="/{{ locale }}/teams">Teams</a></li>
+        <li class="menu-link h5"><a href="/{{ locale }}/events">Events</a></li>
     </ul>
 </div>

@@ -5,24 +5,16 @@
             <div class="event-title">
                 {% if event.150x %}
                 <picture>
-                    <source 
-                      media="(min-width: 650px)" 
-                      srcset="{{ event.150x }},
-                              {{ event.300x }} 2x">
                     <img 
-                      src="{{ event.75x }}" 
-                      srcset="{{ event.150x }} 2x"
+                      src="{{ event.150x }}" 
+                      srcset="{{ event.300x }} 2x"
                       alt="Logo for {{ event.name[locale] }}">
                   </picture>
                 {% else %}
                 <picture>
-                    <source 
-                      media="(min-width: 650px)" 
-                      srcset="https://res.cloudinary.com/itsfish/image/upload/c_scale,f_auto,h_150/v1584424813/CTTA-Almanac/fit_logo.png,
-                      https://res.cloudinary.com/itsfish/image/upload/c_scale,f_auto,h_300/v1584424813/CTTA-Almanac/fit_logo.png 2x">
                     <img 
-                      src="https://res.cloudinary.com/itsfish/image/upload/c_scale,f_auto,h_75/v1584424813/CTTA-Almanac/fit_logo.png" 
-                      srcset="https://res.cloudinary.com/itsfish/image/upload/c_scale,f_auto,h_150/v1584424813/CTTA-Almanac/fit_logo.png 2x"
+                      src="https://res.cloudinary.com/itsfish/image/upload/c_scale,f_auto,h_150/v1584424813/CTTA-Almanac/fit_logo.png" 
+                      srcset="https://res.cloudinary.com/itsfish/image/upload/c_scale,f_auto,h_300/v1584424813/CTTA-Almanac/fit_logo.png 2x"
                       alt="Logo for Federation of International Touch">
                   </picture>
                 {% endif %}

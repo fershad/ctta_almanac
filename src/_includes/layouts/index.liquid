@@ -25,12 +25,12 @@
     <footer>
       <div class="container">
         <p>
-          <a href="https://www.chinesetaipeitouch.com" class="link quiet">CTTA Homepage</a>
+          <a href="https://www.chinesetaipeitouch.com" class="link quiet">{{ localized[locale].footer.homepage }}</a>
         </p>
         <p>
-          <a href="https://www.facebook.com/ChineseTaipeiTouch/" class="link quiet">Facebook</a>
+          <a href="https://www.facebook.com/ChineseTaipeiTouch/" class="link quiet">{{ localized[locale].footer.facebook }}</a>
         </p>
-        <p>Built by Fershad Irani for Chinese Taipei Touch Association. | <a href="https://github.com/fishintaiwan/ctta_almanac" class="link quiet">Repo</a></p>
+        <p>{{ localized[locale].footer.credit | safe }}</p>
       </div>
     </footer>
 </body>
