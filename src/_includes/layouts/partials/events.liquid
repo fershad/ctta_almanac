@@ -2,8 +2,35 @@
     {% for event in events %}
     {% unless event.matches.size == 0 and event.referees.event.size == 0 %}
         <div class="event">
-            <h2 class="h2 loud">{{ event.name[locale] }}</h2>
-            <p class="">Event Type: {{ event.type | capitalize }}</p>
+            <div class="event-title">
+                {% if event.150x %}
+                <picture>
+                    <source 
+                      media="(min-width: 650px)" 
+                      srcset="{{ event.150x }},
+                              {{ event.300x }} 2x">
+                    <img 
+                      src="{{ event.75x }}" 
+                      srcset="{{ event.150x }} 2x"
+                      alt="Logo for {{ event.name[locale] }}">
+                  </picture>
+                {% else %}
+                <picture>
+                    <source 
+                      media="(min-width: 650px)" 
+                      srcset="https://res.cloudinary.com/itsfish/image/upload/c_scale,f_auto,h_150/v1584424813/CTTA-Almanac/fit_logo.png,
+                      https://res.cloudinary.com/itsfish/image/upload/c_scale,f_auto,h_300/v1584424813/CTTA-Almanac/fit_logo.png 2x">
+                    <img 
+                      src="https://res.cloudinary.com/itsfish/image/upload/c_scale,f_auto,h_75/v1584424813/CTTA-Almanac/fit_logo.png" 
+                      srcset="https://res.cloudinary.com/itsfish/image/upload/c_scale,f_auto,h_150/v1584424813/CTTA-Almanac/fit_logo.png 2x"
+                      alt="Logo for Federation of International Touch">
+                  </picture>
+                {% endif %}
+                <div>
+                    <h2 class="h2 loud">{{ event.name[locale] }}</h2>
+                    <p class="type">{{ event.type | upcase }}</p>
+                </div>
+            </div>
             {% unless event.matches.size == 0 %}
             <h3 class="h3">Matches</h3>
             <div class="matches data-table">

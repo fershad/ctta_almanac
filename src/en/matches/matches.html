@@ -29,7 +29,7 @@ permalink: "/{{ locale }}/events/{{ match.event.name.en | slug }}/matches/{{ mat
         <tbody>
           {% for player in match.players %}
                 <tr class="player">
-                    <td class="name"><a href="/{{ locale }}/players/{{ player.name.en | slug }}" class="link">{{ player.name[locale] }}</a></td>
+                    <td class="name"><a href="/{{ locale }}/players/{{ player.playerName.name.en | slug }}" class="link">{{ player.playerName.name[locale] }}</a></td>
                     <td class="touchdowns">{{ player.touchdowns }}</td>
                     <td class="assists">{{ player.assists }}</td>
                 </tr>

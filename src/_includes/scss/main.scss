@@ -203,4 +203,25 @@ html {
   width: 100%;
 }
 
+.event {
+  margin-bottom: 3rem;
+}
+
+.event-title {
+  display: flex;
+  column-gap: 1.5rem;
+}
+
+.event-title .type {
+  margin-top: -1.5em;
+  font-variant: all-small-caps;
+  letter-spacing: 1.1px;
+}
+
+.event-title img, .event-title picture {
+  max-width: 150px;
+  width: 100%;
+  height: auto;
+}
+
 @import 'variables/media'
