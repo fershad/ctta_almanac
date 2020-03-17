@@ -11,15 +11,25 @@ permalink: /{{ locale }}/players/{{ player.name.en | slug }}/index.html
 ---
 <div class="player-details">
   <div class="summary">
-<h2>{{ player.name[locale] }}</h2>
-<div>
-  <h3>Summary</h3>
-  <p>Matches: {{ player.matchCount }}</p>
-  <p>Touchdowns: {{ player.matchStats.touchdowns }}</p>
-  <p>Assists: {{ player.matchStats.assists }}</p>
-</div>
-</div>
+    <picture>
+      <source 
+        media="(min-width: 650px)" 
+        srcset="{{ player.300x }},
+                {{ player.600x }} 2x">
+      <img 
+        src="{{ player.150x }}" 
+        srcset="{{ player.300x }} 2x"
+        alt="Picture of CTTA Player {{ player.name[locale] }}">
+    </picture>
+    <div class="details">
+      <h2 class="h2">{{ player.name[locale] }}</h2>
+      <p class="summary-sub-heading loud">FIT Internationals Played: {{ player.matchCount }}</p>
+      <p class="summary-sub-heading">Touchdowns: {{ player.matchStats.touchdowns }}</p>
+      <p class="summary-sub-heading">Assists: {{ player.matchStats.assists }}</p>
+    </div>
+  </div>
 
+<h3 class="h3">Matches Played</h3>
 {% assign matches = player.matches %}
 {% include './layouts/partials/stats/match-stats' %}
 </div>

@@ -221,7 +221,7 @@ html {
   column-gap: 1.5rem;
 }
 
-.support-details, .referee-details, .coach-details {
+.support-details, .referee-details, .coach-details, .player-details {
   .summary {
     display: flex;
     column-gap: 1.5rem;
@@ -249,7 +249,7 @@ html {
   }
 }
 
-.support-details, .referee-details, .coach-details {
+.support-details, .referee-details, .coach-details, .player-details {
   .summary {
     img, picture {
       max-width: 150px;
