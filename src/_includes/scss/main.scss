@@ -196,6 +196,15 @@ html {
   }
 }
 
+.data-table table > tfoot {
+  background-color: $table-footer-color;
+  color: $footer-text-color;
+  
+  td {
+    @include table-cell-padding();
+  }
+}
+
 #teams .team {
   grid-template-columns: 1fr;
   grid-template-areas: "matches"

@@ -30,8 +30,20 @@ permalink: "/{{ locale }}/events/{{ match.event.name.en | slug }}/matches/{{ mat
           {% for player in match.players %}
                 <tr class="player">
                     <td class="name"><a href="/{{ locale }}/players/{{ player.playerName.name.en | slug }}" class="link">{{ player.playerName.name[locale] }}</a></td>
-                    <td class="touchdowns">{{ player.touchdowns }}</td>
-                    <td class="assists">{{ player.assists }}</td>
+                    <td class="touchdowns">
+                      {% if player.touchdowns %}
+                        {{ player.touchdowns }}
+                      {% else %}
+                        -
+                      {% endif %}
+                    </td>
+                    <td class="assists">
+                      {% if player.assists %}
+                        {{ player.assists }}
+                      {% else %}
+                        -  
+                      {% endif %}
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
