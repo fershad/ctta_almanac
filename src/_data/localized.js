@@ -1,4 +1,14 @@
 module.exports = {
+    languages: [
+        {
+          label: "EN",
+          code: "en"
+        },
+        {
+          label: "中文(繁體)",
+          code: "tw"
+        }
+      ],
     en: {
         singular: {
             player: "player",

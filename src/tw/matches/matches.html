@@ -9,7 +9,7 @@ pagination:
   addAllPagesToCollections: true
 permalink: "/{{ locale }}/events/{{ match.event.name.en | slug }}/matches/{{ match.gameDate | date: '%y%m%d' }}/{{ match.opponent.name.en | slug }}/index.html"
 renderData:
-    translationKey: {{match.gameDate | date: '%y%m%d'}}-{{match.slug.current}}
+    translationKey: {{match.opponent.name.en | slug}}
 ---
 
 <div class="match-details">
