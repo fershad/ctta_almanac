@@ -8,6 +8,8 @@ pagination:
   size: 1
   addAllPagesToCollections: true
 permalink: /{{ locale }}/supporters/{{ support.name.en | slug }}/index.html
+renderData:
+    translationKey: support-{{support.slug.current}}
 ---
 <div class="support-details">
   <div class="summary">

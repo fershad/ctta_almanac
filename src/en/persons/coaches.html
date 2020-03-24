@@ -8,15 +8,21 @@ pagination:
   size: 1
   addAllPagesToCollections: true
 permalink: /{{ locale }}/coaches/{{ coach.name.en | slug }}/index.html
+renderData:
+    translationKey: coach-{{coach.slug.current}}
 ---
-{% assign wins = 0%}
-{% assign draws = 0%}
+{% assign wins = 0 %}
+{% assign draws = 0 %}
 {% assign losses = 0 %}
 {% for match in coach.matches %}
-{% case match.result %}
-  {% when "Win" %}
+{% case match.result[locale] %}
+  {% when "win" %}
     {% assign wins = wins | plus: 1 %}
-  {% when "Draw" %}
+  {% when "贏" %}
+    {% assign wins = wins | plus: 1 %}
+  {% when "draw" %}
+    {% assign draws = draws | plus: 1 %}
+  {% when "平" %}
     {% assign draws = draws | plus: 1 %}
   {% else %}
     {% assign losses = losses | plus: 1 %}

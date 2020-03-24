@@ -32,9 +32,10 @@ module.exports = {
             score: "score",
             result: "result",
             teams: "teams",
-            assistsNote: "*Assists stat may not be complete due to limited data."
+            assistsNote: "Assists stat may not be complete due to limited data."
         },
         header: {
+            title: "Chinese Taipei Touch Association Almanac",
             persons: "Persons",
             teams: "Teams",
             events: "Events"
@@ -88,9 +89,10 @@ module.exports = {
             score: "得分子",
             result: "結果",
             teams: "球隊",
-            assistsNote: "*Assists stat may not be complete due to limited data."
+            assistsNote: "Assists stat may not be complete due to limited data."
         },
         header: {
+            title: "台灣觸球協會年鑑",
             persons: "隊員",
             teams: "球隊",
             events: "聯賽"

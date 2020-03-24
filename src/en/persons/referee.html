@@ -8,6 +8,8 @@ pagination:
   size: 1
   addAllPagesToCollections: true
 permalink: /{{ locale }}/referees/{{ referee.name.en | slug }}/index.html
+renderData:
+    translationKey: referee-{{referee.slug.current}}
 ---
 <div class="referee-details">
   <div class="summary">
@@ -30,8 +32,7 @@ permalink: /{{ locale }}/referees/{{ referee.name.en | slug }}/index.html
 
 <h3 class="h3">{{ localized[locale].plural.match | capitalize }}</h3>
 {% assign matches = referee.matches %}
-<div class="data-table">
-  <div class="referees data-table">
+<div class="referees data-table">
     <table>
         <thead>
             <tr>
@@ -39,7 +40,6 @@ permalink: /{{ locale }}/referees/{{ referee.name.en | slug }}/index.html
                 <th class="division">{{ localized[locale].table.division | capitalize }}</th>
                 <th class="refTeams">{{ localized[locale].table.teams | capitalize }}</th>
                 <th class="score">{{ localized[locale].table.score | capitalize }}</th>
-                <th class="referees">{{ localized[locale].plural.referee | capitalize }}</th>
             </tr>
         </thead>
         <tbody>

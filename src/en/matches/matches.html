@@ -8,13 +8,15 @@ pagination:
   size: 1
   addAllPagesToCollections: true
 permalink: "/{{ locale }}/events/{{ match.event.name.en | slug }}/matches/{{ match.gameDate | date: '%y%m%d' }}/{{ match.opponent.name.en | slug }}/index.html"
+renderData:
+    translationKey: {{match.gameDate | date: '%y%m%d'}}-{{match.slug.current}}
 ---
 
 <div class="match-details">
   <div class="summary">
     <h2 class="h2">{{ match.division.name[locale] }} v. {{ match.opponent.name[locale] }}</h2> 
     <p class="summary-sub-heading loud">{{ match.event.name[locale] }}</p>
-    <p class="summary-sub-heading">{{ localized[locale].table.result | capitalize }}: {{ match.taipeiScore }} - {{ match.opponent.score }} ({{ match.result }})</p>
+    <p class="summary-sub-heading">{{ localized[locale].table.result | capitalize }}: {{ match.taipeiScore }} - {{ match.opponent.score }} ({{ match.result[locale] }})</p>
   </div>
 
   <div class="data-table">
@@ -49,7 +51,7 @@ permalink: "/{{ locale }}/events/{{ match.event.name.en | slug }}/matches/{{ mat
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="4" class="small">*{{ localized[locale].table.assistsNote | capitalize }}</td>
+                <td colspan="3" class="small">*{{ localized[locale].table.assistsNote | capitalize }}</td>
             </tr>
         </tfoot>
     </table>

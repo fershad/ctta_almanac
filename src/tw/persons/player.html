@@ -8,6 +8,8 @@ pagination:
   size: 1
   addAllPagesToCollections: true
 permalink: /{{ locale }}/players/{{ player.name.en | slug }}/index.html
+renderData:
+    translationKey: player-{{player.slug.current}}
 ---
 <div class="player-details">
   <div class="summary">
@@ -23,7 +25,7 @@ permalink: /{{ locale }}/players/{{ player.name.en | slug }}/index.html
     </picture>
     <div class="details">
       <h2 class="h2">{{ player.name[locale] }}</h2>
-      <p class="summary-sub-heading loud">{{ localized[locale].other.playedInternationals }}: {{ player.matchCount }}</p>
+      <p class="summary-sub-heading loud">{{ localized[locale].other.playerInternationals }}: {{ player.matchCount }}</p>
       <p class="summary-sub-heading">{{ localized[locale].plural.touchdown | capitalize }}: {{ player.matchStats.touchdowns }}</p>
       <p class="summary-sub-heading">{{ localized[locale].plural.assist | capitalize }}: {{ player.matchStats.assists }}</p>
     </div>

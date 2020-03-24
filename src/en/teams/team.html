@@ -8,6 +8,8 @@ pagination:
   size: 1
   addAllPagesToCollections: true
 permalink: /{{ locale }}/teams/{{ team.name.en | slug }}/index.html
+renderData:
+    translationKey: team-{{team.slug.current}}
 ---
 <h2>{{ team.name[locale] }}</h2> 
 {% unless team.matches.size == 0 and team.players.size == 0 %}
