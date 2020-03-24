@@ -14,12 +14,25 @@ const generateMatches = (match) => {
 }
 
 const getResult = (opponent, taipei) => {
+    let result = {}
     if (parseInt(opponent) < taipei) {
-        return "Win"
+        result = {
+            "en": "win",
+            "tw": "贏"
+        }
+        return result
     } else if (parseInt(opponent) == taipei) {
-        return "Draw"
+        result = {
+            "en": "draw",
+            "tw": "平"
+        }
+        return result
     } else if (parseInt(opponent) > taipei) {
-        return "Loss"
+        result = {
+            "en": "loss",
+            "tw": "輸"
+        }
+        return result
     }
 }
 

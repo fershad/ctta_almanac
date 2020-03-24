@@ -43,7 +43,7 @@
                             <td class="division">{{ match.division.name[locale] }}</td>
                             <td class="opponent"><a href="/{{ locale }}/events/{{ match.event.name.en | slug }}/matches/{{ match.gameDate | date: '%y%m%d' }}/{{ match.opponent.name.en | slug }}" class="link">{{ match.opponent.name[locale] }}</a</td>
                             <td class="score">{{ match.taipeiScore }} - {{ match.opponent.score }}</td>
-                            <td class="result">{{ match.result }}</td>
+                            <td class="result">{{ match.result[locale] | capitalize}}</td>
                         </tr>
                     {% endfor %}
                     </tbody>

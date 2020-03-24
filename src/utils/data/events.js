@@ -45,16 +45,16 @@ function generateEvent (data) {
       'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
       "matches": *[_type == "gamesTeam" && references(^._id)] | order(gameDate desc) {
           _id,
-          division->{name},
-          event->{name},
+          division->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}},
+          event->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}},
           gameDate,
-          opponent,
+          opponent{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}, score},
           taipeiScore,
       },
       "referees": *[_type == "gamesReferee" && references(^._id)] {
         ...,
-        referee[]->{name},
-        event->{name}
+        referee[]->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}},
+        event->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}}
       }
     }`
     const order = `| order(year desc)`
