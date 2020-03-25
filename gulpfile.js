@@ -37,7 +37,7 @@ const AUTOPREFIXER_BROWSERS = [
       .pipe(cleanCSS({level: {1: {specialComments: 0}}}))
       .pipe(rename({ suffix: ".min" }))
       // Output
-      .pipe(gulp.dest('./src/_includes/css'))
+      .pipe(gulp.dest('./site/_includes/css'))
   });
 
   
@@ -48,7 +48,7 @@ gulp.task('js', function() {
     .pipe(uglify())
     .pipe(rename({ suffix: ".min" }))
     // Output
-    .pipe(gulp.dest("./src/_includes/js/min"))
+    .pipe(gulp.dest("./site/_includes/js/min"))
 });
 
 
