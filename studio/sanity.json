@@ -2,7 +2,17 @@
   "root": true,
   "api": {
     "projectId": "nxypgfqb",
-    "dataset": "development"
+    "dataset": "production"
+  },
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ],
+      "api": {
+        "dataset": "development"
+      }
+    }
   },
   "project": {
     "name": "CTTA Almanac"
@@ -14,21 +24,6 @@
     "@sanity/default-login",
     "@sanity/desk-tool"
   ],
-  "env": {
-    "development": {
-      "plugins": [
-        "@sanity/vision"
-      ],
-      "api": {
-        "dataset": "development"
-      }
-    },
-    "production": {
-      "api": {
-        "dataset": "production"
-      }
-    }
-  },
   "parts": [
     {
       "name": "part:@sanity/base/schema",
