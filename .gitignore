@@ -2,4 +2,5 @@ node_modules
 site
 src/_includes/css/
 .env
-sanity/node_modules
+studio/node_modules
+studio/dump
