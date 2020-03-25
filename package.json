@@ -4,7 +4,7 @@
   "description": "Basic starter suitable for most of my personal projects built using 11ty.",
   "main": "index.html",
   "scripts": {
-    "build": "npx eleventy",
+    "build": "npx eleventy && postbuild",
     "watch": "npx eleventy --watch",
     "dev": "npm run watch-serve",
     "now-build": "npm run build",
