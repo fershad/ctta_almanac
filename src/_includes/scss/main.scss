@@ -127,10 +127,12 @@ html {
 #teams {
   .matches {
     grid-area: matches;
+    overflow: auto;
   }
 
   .players {
     grid-area: players;
+    overflow: auto;
   }
 
   .name {

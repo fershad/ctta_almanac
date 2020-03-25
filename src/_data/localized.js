@@ -99,7 +99,7 @@ module.exports = {
             score: "得分子",
             result: "結果",
             teams: "球隊",
-            assistsNote: "*由於數據有限，助攻質料可能無法完成."
+            assistsNote: "*由於數據有限，助攻的資料可能還不完真."
         },
         header: {
             title: "台灣觸球協會年鑑",
