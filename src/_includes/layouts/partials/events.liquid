@@ -20,7 +20,7 @@
                 {% endif %}
                 <div>
                     <h2 class="h2 loud">{{ event.name[locale] }}</h2>
-                    <p class="type">{{ event.type | upcase }}</p>
+                    <p class="type">{{ event.type[locale] | upcase }}</p>
                 </div>
             </div>
             {% unless event.matches.size == 0 %}
