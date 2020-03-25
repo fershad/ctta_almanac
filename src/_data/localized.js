@@ -89,17 +89,17 @@ module.exports = {
             tournament: "聯賽",
             team: "球隊",
             touchdown: "觸地得分",
-            assist: "assists"
+            assist: "助攻"
         },
         table: {
             date: "日期",
             event: "聯賽",
-            division: "division",
+            division: "組別",
             opponent: "對手",
             score: "得分子",
             result: "結果",
             teams: "球隊",
-            assistsNote: "Assists stat may not be complete due to limited data."
+            assistsNote: "*由於數據有限，助攻質料可能無法完成."
         },
         header: {
             title: "台灣觸球協會年鑑",
@@ -108,10 +108,10 @@ module.exports = {
             events: "聯賽"
         },
         other: {
-            coachesInternationals: "FIT Internationals Coached",
-            playerInternationals: "FIT Internationals Played",
-            refereeInternationals: "FIT Internationals Officiated",
-            eventsAttended: "Events Attended",
+            coachesInternationals: "FIT 國際比賽教練了",
+            playerInternationals: "FIT 國際比賽參加了",
+            refereeInternationals: "FIT 國際比賽裁判了",
+            eventsAttended: "參加了活動",
             wins: "贏",
             draws: "平",
             losses: "輸",
