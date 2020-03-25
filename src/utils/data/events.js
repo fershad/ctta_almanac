@@ -8,11 +8,38 @@ function generateEvent (data) {
     return {
       ...data,
       matches: data.matches.map(generateMatches),
+      type: localizeType(data.type),
       referees: generateReferees(data.referees),
       '75x': images(data.image).width(75).height(75).auto("format").url(),
       '150x': images(data.image).width(150).height(150).auto("format").url(),
       '300x': images(data.image).width(300).height(300).auto("format").url()
     }
+  }
+
+  function localizeType(type) {
+    let localized = []
+    switch (type) {
+      case "tournament":
+        localized = {
+          en: "tournament",
+          tw: "聯賽"
+        }
+        break;
+      case "series":
+        localized = {
+          en: "series",
+          tw: "系列"
+        }
+        break;
+      case "match":
+        localized = {
+          en: "series",
+          tw: "比賽"
+        }
+        break;
+    }
+
+    return localized
   }
 
   function generateReferees(data) {
