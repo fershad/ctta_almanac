@@ -27,11 +27,12 @@ renderData:
       <h2 class="h2">{{ player.name[locale] }}</h2>
       <p class="summary-sub-heading loud">{{ localized[locale].other.playerInternationals }}: {{ player.matchCount }}</p>
       <p class="summary-sub-heading">{{ localized[locale].plural.touchdown | capitalize }}: {{ player.matchStats.touchdowns }}</p>
-      <p class="summary-sub-heading">{{ localized[locale].plural.assist | capitalize }}: {{ player.matchStats.assists }}</p>
+      <p class="summary-sub-heading">{{ localized[locale].plural.assist | capitalize }}*: {{ player.matchStats.assists }}</p>
     </div>
   </div>
 
 <h3 class="h3">{{ localized[locale].plural.match | capitalize }}</h3>
 {% assign matches = player.matches %}
 {% include './layouts/partials/stats/match-stats' %}
+<p class="small">{{ localized[locale].table.assistsNote | capitalize }}</p>
 </div>
