@@ -149,7 +149,7 @@ html {
 .data-table table {
   width: 100%;
   overflow: hidden;
-  table-layout: fixed;
+  table-layout: auto;
 }
 
 .data-table table > tbody tr:nth-child(odd) {
