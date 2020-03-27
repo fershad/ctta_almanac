@@ -125,12 +125,12 @@ html {
 }
 
 #teams {
-  row-gap: 2em;
-  grid-row-gap: 2em;
-  
+
+
   .matches {
     grid-area: matches;
     overflow: auto;
+    margin-top: 2em;
   }
 
   .players {
