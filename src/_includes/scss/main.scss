@@ -125,6 +125,9 @@ html {
 }
 
 #teams {
+  row-gap: 2em;
+  grid-row-gap: 2em;
+  
   .matches {
     grid-area: matches;
     overflow: auto;
