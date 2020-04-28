@@ -23,7 +23,7 @@ module.exports = function(eleventyConfig) {
       dynamicPartials: true
     });
 
-    eleventyConfig.addPlugin(lazyImagesPlugin);
+    // eleventyConfig.addPlugin(lazyImagesPlugin);
 
 
     return {

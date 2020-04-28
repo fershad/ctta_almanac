@@ -63,7 +63,7 @@ module.exports = {
         footer: {
             'homepage': 'CTTA Homepage',
             'facebook': 'Facebook',
-            'credit': 'Built by <a href="https://www.fershad.com/en" class="link quiet">Fershad Irani</a> for Chinese Taipei Touch Association. Data taken from CTTA records, and the <a href="https://www.internationaltouch.org/almanac/" class="link quiet">FIT Official Almanac</a> | <a href="https://github.com/fishintaiwan/ctta_almanac" class="link quiet">Repo</a>'
+            'credit': 'Built by <a href="https://www.fershad.com/en" class="link quiet">Fershad Digital</a> for Chinese Taipei Touch Association. Data taken from CTTA records, and the <a href="https://www.internationaltouch.org/almanac/" class="link quiet">FIT Official Almanac</a> | <a href="https://github.com/fishintaiwan/ctta_almanac" class="link quiet">Repo</a>'
         }
     },
     tw: {
@@ -77,7 +77,7 @@ module.exports = {
             tournament: "聯賽",
             team: "球隊",
             touchdown: "觸地得分",
-            assist: "assist"
+            assist: "助攻"
         },
         plural: {
             player: "隊員",
@@ -120,7 +120,7 @@ module.exports = {
         footer: {
             'homepage': '台灣觸球協會網站',
             'facebook': '臉書',
-            'credit': 'Built by <a href="https://www.fershad.com/en" class="link quiet">Fershad Irani</a> for Chinese Taipei Touch Association. Data taken from CTTA records, and the <a href="https://www.internationaltouch.org/almanac/" class="link quiet">FIT Official Almanac</a> | <a href="https://github.com/fishintaiwan/ctta_almanac" class="link quiet">Repo</a>'
+            'credit': '網站由 <a href="https://www.fershad.com/tw" class="link quiet">弗夏數位</a> 建置. 數據皆來自 台灣觸球協會 及 <a href="https://www.internationaltouch.org/almanac/" class="link quiet">FIT</a> (國際觸球聯盟).'
         }
     }
 }

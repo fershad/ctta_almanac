@@ -17,8 +17,8 @@
     </ul>
 
     <ul id="menu">
-        <li class="menu-link h5"><a href="/{{ locale }}/persons">{{ localized[locale].header.persons | capitalize }}</a></li>
-        <li class="menu-link h5"><a href="/{{ locale }}/teams">{{ localized[locale].header.teams | capitalize }}</a></li>
-        <li class="menu-link h5"><a href="/{{ locale }}/events">{{ localized[locale].header.events | capitalize }}</a></li>
+        <li class="menu-link h5"><a {% if key == 'index' %} class="active" {% endif %} href="/{{ locale }}/">{{ localized[locale].header.persons | capitalize }}</a></li>
+        <li class="menu-link h5"><a {% if key == 'teams' %} class="active" {% endif %} href="/{{ locale }}/teams">{{ localized[locale].header.teams | capitalize }}</a></li>
+        <li class="menu-link h5"><a {% if key == 'events' %} class="active" {% endif %} href="/{{ locale }}/events">{{ localized[locale].header.events | capitalize }}</a></li>
     </ul>
 </div>
