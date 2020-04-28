@@ -19,6 +19,7 @@
     "@sanity/client": "^0.144.0",
     "@sanity/image-url": "^0.140.17",
     "country-emoji": "^1.5.0",
+    "eleventy-plugin-lazyimages": "^1.1.1",
     "groq": "^0.144.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",

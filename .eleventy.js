@@ -1,4 +1,5 @@
 const slugify = require ("slugify")
+const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
 
 module.exports = function(eleventyConfig) {
 
@@ -21,6 +22,9 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.setLiquidOptions({
       dynamicPartials: true
     });
+
+    eleventyConfig.addPlugin(lazyImagesPlugin);
+
 
     return {
       dir: {
