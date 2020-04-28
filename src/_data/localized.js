@@ -61,6 +61,7 @@ module.exports = {
             
         },
         footer: {
+            'about': "About",
             'homepage': 'CTTA Homepage',
             'facebook': 'Facebook',
             'credit': 'Built by <a href="https://www.fershad.com/en" class="link quiet">Fershad Digital</a> for Chinese Taipei Touch Association. Data taken from CTTA records, and the <a href="https://www.internationaltouch.org/almanac/" class="link quiet">FIT Official Almanac</a> | <a href="https://github.com/fishintaiwan/ctta_almanac" class="link quiet">Repo</a>'
@@ -118,6 +119,7 @@ module.exports = {
             
         },
         footer: {
+            'about': "關於",
             'homepage': '台灣觸球協會網站',
             'facebook': '臉書',
             'credit': '網站由 <a href="https://www.fershad.com/tw" class="link quiet">弗夏數位</a> 建置. 數據皆來自 台灣觸球協會 及 <a href="https://www.internationaltouch.org/almanac/" class="link quiet">FIT</a> (國際觸球聯盟).'
