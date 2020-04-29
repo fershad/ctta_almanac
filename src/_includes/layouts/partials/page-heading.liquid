@@ -22,3 +22,7 @@
         <li class="menu-link h5"><a {% if key == 'events' %} class="active" {% endif %} href="/{{ locale }}/events">{{ localized[locale].header.events | capitalize }}</a></li>
     </ul>
 </div>
+
+<!--- Link prefetching -->
+<link rel="prefetch" href="/{{ locale }}/teams">
+<link rel="prefetch" href="/{{ locale }}/events">
