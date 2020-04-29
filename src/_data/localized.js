@@ -48,7 +48,8 @@ module.exports = {
             title: "Chinese Taipei Touch Association Almanac",
             persons: "Persons",
             teams: "Teams",
-            events: "Events"
+            events: "Events",
+            about: "This almanac serves to capture the achievements of Chinese Taipei Touch Assocation members on the international stage. It captures data for officially recognised FIT internationals only, and does not capture data from local or regional Touch tournaments."
         },
         other: {
             coachesInternationals: "FIT Internationals Coached",
@@ -106,7 +107,8 @@ module.exports = {
             title: "台灣觸球協會年鑑",
             persons: "隊員",
             teams: "球隊",
-            events: "聯賽"
+            events: "聯賽",
+            about: "本年曆旨在捕捉台灣觸球協會會員在國際舞台上的成就。 本網站僅捕獲官方認可的FIT國際比賽的數據，而不會捕獲來自本地或區域性Touch錦標賽的數據。"
         },
         other: {
             coachesInternationals: "FIT 國際比賽教練了",
