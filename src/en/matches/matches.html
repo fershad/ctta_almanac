@@ -1,61 +1,65 @@
 ---
 layout: index
 tags:
-- matches
+  - matches
 pagination:
-alias: match
-data: matches
-size: 1
-addAllPagesToCollections: true
+  alias: match
+  data: matches
+  size: 1
+  addAllPagesToCollections: true
 permalink: "/{{ locale }}/events/{{ match.event.name.en | slug }}/matches/{{ match.gameDate | date: '%y%m%d' }}/{{ match.opponent.name.en | slug }}/index.html"
-renderData:
-translationKey: {{match.opponent.name.en | slug}}
 ---
 
 <div class="match-details">
-  <div class="summary">
-    <h2 class="h2">{{ match.division.name[locale] }} v. {{ match.opponent.name[locale] }}</h2>
-    <p class="summary-sub-heading loud">{{ match.event.name[locale] }}</p>
-    <p class="summary-sub-heading">{{ localized[locale].table.result | capitalize }}: {{ match.taipeiScore }} -
-      {{ match.opponent.score }} ({{ match.result[locale] }})</p>
-  </div>
+    <div class="summary">
+        <h2 class="h2">{{ match.division.name[locale] }}
+            v.
+            {{ match.opponent.name[locale] }}</h2>
+        <p class="summary-sub-heading loud">{{ match.event.name[locale] }}</p>
+        <p class="summary-sub-heading">{{ localized[locale].table.result | capitalize }}:
+            {{ match.taipeiScore }}
+            -
+            {{ match.opponent.score }}
+            ({{ match.result[locale] }})</p>
+    </div>
 
-  <div class="data-table">
-    <table>
-      <thead>
-        <tr>
-          <th class="name"></th>
-          <th class="touchdowns">{{ localized[locale].plural.touchdown | capitalize }}</th>
-          <th class="assists">{{ localized[locale].plural.assist | capitalize }}*</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for player in match.players %}
-        <tr class="player">
-          <td class="name"><a href="/{{ locale }}/players/{{ player.playerName.name.en | slug }}"
-              class="link">{{ player.playerName.name[locale] }}</a></td>
-          <td class="touchdowns">
-            {% if player.touchdowns %}
-            {{ player.touchdowns }}
-            {% else %}
-            -
-            {% endif %}
-          </td>
-          <td class="assists">
-            {% if player.assists %}
-            {{ player.assists }}
-            {% else %}
-            -
-            {% endif %}
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="3" class="small">*{{ localized[locale].table.assistsNote | capitalize }}</td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
+    <div class="data-table">
+        <table>
+            <thead>
+                <tr>
+                    <th class="name"></th>
+                    <th class="touchdowns">{{ localized[locale].plural.touchdown | capitalize }}</th>
+                    <th class="assists">{{ localized[locale].plural.assist | capitalize }}*</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in match.players %}
+                    <tr class="player">
+                        <td class="name">
+                            <a class="link" href="/{{ locale }}/players/{{ player.playerName.name.en | slug }}">{{ player.playerName.name[locale] }}</a>
+                        </td>
+                        <td class="touchdowns">
+                            {% if player.touchdowns %}
+                                {{ player.touchdowns }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td class="assists">
+                            {% if player.assists %}
+                                {{ player.assists }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="small" colspan="3">*{{ localized[locale].table.assistsNote | capitalize }}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 </div>
