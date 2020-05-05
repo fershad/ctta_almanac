@@ -10,7 +10,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="preload" href="/_includes/css/main.min.css" as="style">
 <title>{{ localized[locale].header.title }}</title>
     <meta name="Description" content="{{ localized[locale].header.about }}">
     <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin>
@@ -38,7 +37,11 @@
         <p>{{ localized[locale].footer.credit | safe }}</p>
       </div>
     </footer>
+    {% if docLocale %}
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,500,900&display=swap&subset=chinese-traditional" rel="stylesheet"> 
+    {% else %}
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,500,900&display=swap" rel="stylesheet"> 
+    {% endif %}
 </body>
 
 </html>
