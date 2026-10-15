@@ -17,22 +17,34 @@ function generatePerson(data) {
 async function getPersonsData() {
   const filter = groq``;
   const projection = groq`{
-      'players': _type == "gamesTeam" && !(_id in path("drafts.**")) && ^._id in players[].playerName._ref {
+      'players': *[
+        _type == "person" &&
+        !(_id in path("drafts.**")) &&
+        player.isPlayer
+      ] {
           ...,
           'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
-          "matches": *[_type == "gamesTeam" && references(^._id)] | order(gameDate desc) {
+          "matches": *[
+            _type == "gamesTeam" &&
+            !(_id in path("drafts.**")) &&
+            ^._id in players[].playerName._ref
+          ] | order(gameDate desc) {
             gameDate,
-              division->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}},
-              event->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}},
-              "opponent": {
-                "score": opponent.score,
-                'name': {'tw': coalesce(opponent.name.tw, opponent.name.en), 'en': coalesce(opponent.name.en, opponent.name.en)}
-              },
-              players,
-              taipeiScore
+            division->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}},
+            event->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}},
+            "opponent": {
+              "score": opponent.score,
+              'name': {'tw': coalesce(opponent.name.tw, opponent.name.en), 'en': coalesce(opponent.name.en, opponent.name.en)}
+            },
+            players,
+            taipeiScore
           }
         },
-        'coaches': _type == "gamesTeam" && !(_id in path("drafts.**")) && ^._id in coaches[]._ref {
+        'coaches': *[
+          _type == "person" &&
+          !(_id in path("drafts.**")) &&
+          coach.isCoach
+        ] {
           ...,
           "name": {
             "tw": coalesce(name.tw, name.en),
@@ -67,35 +79,52 @@ async function getPersonsData() {
             coaches,
             taipeiScore
           }
-        }
-        'referees': _type == "gamesReferee" && !(_id in path("drafts.**")) && ^._id in referee[]._ref {
+        },
+        'referees': *[
+          _type == "person" &&
+          !(_id in path("drafts.**")) &&
+          referee.isReferee
+        ] {
             ...,
             'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
-            "matches": *[_type == "gamesReferee" && references(^._id)] | order(gameDate desc) {
+            "matches": *[
+              _type == "gamesReferee" &&
+              !(_id in path("drafts.**")) &&
+              ^._id in referee[]._ref
+            ] | order(gameDate desc) {
               gameDate,
-                "awayTeam": {
-                  "score": awayTeam.score,
+              "awayTeam": {
+                "score": awayTeam.score,
                 'name': {'tw': coalesce(awayTeam.name.tw, awayTeam.name.en), 'en': coalesce(awayTeam.name.en, awayTeam.name.en)}
-                },
-                "homeTeam": {
-                  "score": homeTeam.score,
+              },
+              "homeTeam": {
+                "score": homeTeam.score,
                 'name': {'tw': coalesce(homeTeam.name.tw, homeTeam.name.en), 'en': coalesce(homeTeam.name.en, homeTeam.name.en)}
-                },
-                'division': {'tw': coalesce(division.tw, division.en), 'en': coalesce(division.en, division.en)},
-                event->{
-                  ...,
-                  'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}},
-                referee
+              },
+              'division': {'tw': coalesce(division.tw, division.en), 'en': coalesce(division.en, division.en)},
+              event->{
+                ...,
+                'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}
+              },
+              referee
             }
           },
-        'supporters': _type == "event" && !(_id in path("drafts.**")) && ^._id in support[]._ref {
+        'supporters': *[
+          _type == "person" &&
+          !(_id in path("drafts.**")) &&
+          support.isSupport
+        ] {
             ...,
             'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
-            "events": *[_type == "event" && references(^._id)]{
+            "events": *[
+              _type == "event" &&
+              !(_id in path("drafts.**")) &&
+              ^._id in support[]._ref
+            ] {
                 ...,
-                'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
+                'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}
             }
-          },
+          }
     }`;
   const order = ``;
   const query = [filter, projection, order].join(" ");

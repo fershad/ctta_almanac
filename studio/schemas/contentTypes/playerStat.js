@@ -78,12 +78,15 @@ export default {
       title: "playerName.name.en",
       media: "playerName.image",
       touchdowns: "touchdowns",
+      assists: "assists",
     },
-    prepare({ title = "No title", media, touchdowns }) {
+    prepare({ title = "No title", media, touchdowns, assists }) {
       return {
         title,
         media,
-        subtitle: touchdowns ? "Touchdowns: " + touchdowns : "No touchdowns",
+        subtitle: `${
+          touchdowns ? "Touchdowns: " + touchdowns : "No touchdowns"
+        } |  ${assists ? "Asists: " + assists : "No assists"}`,
       };
     },
   },
