@@ -16,19 +16,33 @@ async function getTeamsData() {
   const projection = groq`{
       ...,
       'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
-      "matches": *[_type == "gamesTeam" && references(^._id)] | order(gameDate desc) {
-          _id,
-          division,
-          event->{name},
-          gameDate,
-          opponent,
-          taipeiScore,
+      "matches": *[
+        _type == "gamesTeam" &&
+        !(_id in path("drafts.**")) &&
+        division._ref == ^._id
+      ] | order(gameDate desc) {
+        _id,
+        division,
+        event->{name},
+        gameDate,
+        opponent,
+        taipeiScore,
       },
-      "players": *[_type == "person" && player.isPlayer && references(^._id)] {
+      "players": *[
+        _type == "person" &&
+        !(_id in path("drafts.**")) &&
+        player.isPlayer &&
+        ^._id in player.division[]._ref
+      ] {
         ...,
         'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
-        "matches": *[_type == "gamesTeam" && references(^._id)] | order(gameDate desc) {
-            ...
+        "matches": *[
+          _type == "gamesTeam" &&
+          !(_id in path("drafts.**")) &&
+          ^._id in players[].playerName._ref &&
+          division._ref == ^.^._id
+        ] | order(gameDate desc) {
+          ...
         }
       }
     }`;

@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "build": "npx eleventy",
-    "watch": "npx eleventy --watch",
+    "watch": "npx eleventy --serve --watch",
     "now-build": "npm run build",
     "debug": "DEBUG=* npx eleventy",
     "watch-serve": "npx eleventy --watch --serve --quiet"
