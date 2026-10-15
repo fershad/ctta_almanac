@@ -14,12 +14,13 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/components": "^1.148.1",
-    "@sanity/vision": "^1.148.1",
-    "prop-types": "^15.6",
-    "react": "^16.2",
-    "react-dom": "^16.2",
-    "sanity": "^6.19.0"
+    "@sanity/components": "^2.14.0",
+    "@sanity/vision": "^6.19.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "sanity": "^6.19.0",
+    "sanity-plugin-netlify": "^1.4.0",
+    "styled-components": "^6.6.0"
   },
   "repository": {
     "type": "git",

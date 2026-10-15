@@ -1,17 +1,19 @@
-import {defineConfig} from 'sanity'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemas/schema'
+import { defineConfig } from "sanity";
+import { structureTool } from "sanity/structure";
+import { visionTool } from "@sanity/vision";
+import { schemaTypes } from "./schemas";
+import { netlifyTool } from "sanity-plugin-netlify";
 
-const isDevelopment = process.env.NODE_ENV === 'development'
-const dataset = process.env.SANITY_STUDIO_DATASET || (isDevelopment ? 'development' : 'production')
+const isDevelopment = process.env.NODE_ENV === "development";
+const dataset = "production";
 
 export default defineConfig({
-  name: 'default',
-  title: 'CTTA Almanac',
-  projectId: 'nxypgfqb',
+  name: "default",
+  title: "CTTA Almanac",
+  projectId: "nxypgfqb",
   dataset,
-  plugins: isDevelopment ? [visionTool()] : [],
+  plugins: [structureTool(), visionTool(), netlifyTool()],
   schema: {
-    types: schemaTypes
-  }
-})
+    types: schemaTypes,
+  },
+});

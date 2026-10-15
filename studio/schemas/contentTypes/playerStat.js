@@ -2,49 +2,57 @@ export default {
   name: `playerStat`,
   title: `Player Stats`,
   type: `object`,
-  fields: [{
+  fields: [
+    {
       name: `playerName`,
       title: `Player Name`,
       type: `reference`,
-      to: [{
-        type: `person`
-      }],
+      to: [
+        {
+          type: `person`,
+        },
+      ],
       options: {
-        filter: ({
-          document
-        }) => {
+        filter: ({ document }) => {
           // Always make sure to check for document properties
           // before attempting to use them
           if (!document.division) {
             return {
-              filter: 'player.isPlayer'
-            }
+              filter: "player.isPlayer",
+            };
           }
-          
-          console.log(document.division._ref)
+
+          console.log(document.division._ref);
           return {
-            filter: 'player.isPlayer && $year in player.years && $division == player.division[]._ref',
+            filter:
+              "player.isPlayer && $year in player.years && $division in player.division[]._ref",
             params: {
               division: document.division._ref,
-              year: document.gameDate.split('-')[0] + "-01-01"
-            }
-          }
-        }
-      }
+              year: document.gameDate.split("-")[0] + "-01-01",
+            },
+          };
+        },
+      },
     },
     {
       name: `touchdowns`,
       title: `Touchdowns`,
       type: `number`,
       required: false,
-      validation: Rule => Rule.integer().min(0).error('Should be a whole number greater than or equal to 0.')
+      validation: (Rule) =>
+        Rule.integer()
+          .min(0)
+          .error("Should be a whole number greater than or equal to 0."),
     },
     {
       name: `assists`,
       title: `Touchdown Assists`,
       type: `number`,
       required: false,
-      validation: Rule => Rule.integer().min(0).error('Should be a whole number greater than or equal to 0.')
+      validation: (Rule) =>
+        Rule.integer()
+          .min(0)
+          .error("Should be a whole number greater than or equal to 0."),
     },
     {
       name: `periodofTime`,
@@ -52,8 +60,8 @@ export default {
       type: `boolean`,
       required: false,
       options: {
-        layout: `checkbox`
-      }
+        layout: `checkbox`,
+      },
     },
     {
       name: `sendOff`,
@@ -61,26 +69,22 @@ export default {
       type: `boolean`,
       required: false,
       options: {
-        layout: `checkbox`
-      }
+        layout: `checkbox`,
+      },
     },
   ],
   preview: {
     select: {
-      title: 'playerName.name.en',
-      media: 'playerName.image',
-      touchdowns: 'touchdowns'
+      title: "playerName.name.en",
+      media: "playerName.image",
+      touchdowns: "touchdowns",
     },
-    prepare({
-      title = 'No title',
-      media,
-      touchdowns
-    }) {
+    prepare({ title = "No title", media, touchdowns }) {
       return {
         title,
         media,
-        subtitle: touchdowns ? "Touchdowns: " + touchdowns : "No touchdowns"
-      }
-    }
-  }
-}
+        subtitle: touchdowns ? "Touchdowns: " + touchdowns : "No touchdowns",
+      };
+    },
+  },
+};
