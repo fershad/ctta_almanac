@@ -1,6 +1,7 @@
 const groq = require("groq");
 const client = require("../sanityClient");
 const generatePlayer = require("../generators/generatePlayer");
+const generateCoach = require("../generators/generateCoach");
 const generateMatches = require("../generators/generateMatches");
 
 function generateTeam(data) {
@@ -8,6 +9,7 @@ function generateTeam(data) {
     ...data,
     matches: data.matches.map(generateMatches),
     players: data.players.map(generatePlayer),
+    coaches: data.coaches.map(generateCoach),
   };
 }
 
@@ -40,6 +42,27 @@ async function getTeamsData() {
           _type == "gamesTeam" &&
           !(_id in path("drafts.**")) &&
           ^._id in players[].playerName._ref &&
+          division._ref == ^.^._id
+        ] | order(gameDate desc) {
+          ...
+        }
+      },
+      "coaches": *[
+        _type == "person" &&
+        !(_id in path("drafts.**")) &&
+        coach.isCoach &&
+        _id in *[
+          _type == "gamesTeam" &&
+          !(_id in path("drafts.**")) &&
+          division._ref == ^.^._id
+        ].coaches[]._ref
+      ] {
+        ...,
+        'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
+        "matches": *[
+          _type == "gamesTeam" &&
+          !(_id in path("drafts.**")) &&
+          ^._id in coaches[]._ref &&
           division._ref == ^.^._id
         ] | order(gameDate desc) {
           ...

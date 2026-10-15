@@ -1,30 +1,31 @@
 ---
 layout: index
 tags:
-  - teams
+    - teams
 pagination:
-  alias: team
-  data: teams
-  size: 1
-  addAllPagesToCollections: true
+    alias: team
+    data: teams
+    size: 1
+    addAllPagesToCollections: true
 permalink: /{{ locale }}/teams/{{ team.name.en | slug }}/index.html
 renderData:
     translationKey: team-{{team.slug.current}}
 ---
-<h2>{{ team.name[locale] }}</h2> 
-{% unless team.matches.size == 0 and team.players.size == 0 %}
-    <div class="grid team">
-        <h2 class="h2 loud">{{ team.name[locale] }}</h2>
-        <div class="matches">
-            <h3 class="h3">{{ localized[locale].plural.match | capitalize }}</h3>
-            {% assign matches = team.matches %}
-            {% include './layouts/partials/stats/match-stats' %}
-        </div>
 
-        <div class="players">
-            <h3 class="h3">{{ localized[locale].plural.player | capitalize }}</h3>
-            {% assign players = team.players %}
-            {% include './layouts/partials/stats/player-stats' %}
-        </div>
+<h2>{{ team.name[locale] }}</h2>
+{% unless team.matches.size == 0 and team.players.size == 0 %}
+<div class="grid team">
+    <h2 class="h2 loud">{{ team.name[locale] }}</h2>
+    <div class="matches">
+        <h3 class="h3">{{ localized[locale].plural.match | capitalize }}</h3>
+        {% assign matches = team.matches %} {% include
+        './layouts/partials/stats/match-stats' %}
     </div>
+
+    <div class="players">
+        <h3 class="h3">{{ localized[locale].plural.player | capitalize }}</h3>
+        {% assign players = team.players %} {% include
+        './layouts/partials/stats/player-stats' %}
+    </div>
+</div>
 {% endunless %}

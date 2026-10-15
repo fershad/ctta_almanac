@@ -10,12 +10,20 @@
                     {% include './layouts/partials/stats/match-stats' %}
                 </div>
                 {% endunless %}
-    
+
                 {% unless team.players.size == 0 %}
                 <div class="players">
                     <h3 class="h3">{{ localized[locale].plural.player | capitalize }}</h3>
                     {% assign players = team.players %}
                     {% include './layouts/partials/stats/player-stats' %}
+                </div>
+                {% endunless %}
+
+                {% unless team.coaches.size == 0 %}
+                <div class="coaches">
+                    {% assign excludeHeading = true %}
+                    <h3 class="h3">{{ localized[locale].plural.coach | capitalize }}</h3>
+                    {% assign coaches = team.coaches %} {% include './layouts/partials/stats/coach-stats' %}
                 </div>
                 {% endunless %}
             </div>

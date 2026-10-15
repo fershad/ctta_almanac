@@ -1,5 +1,7 @@
 <div id="coach-stats">
-    <h2 class="h2 loud">{{ localized[locale].plural.coach | capitalize }}</h2>
+    {% unless excludeHeading == true %}
+        <h2 class="h2 loud">{{ localized[locale].plural.coach | capitalize }}</h2>
+    {% endunless %}
     <div class="data-table">
         <table>
             <thead>
@@ -9,7 +11,8 @@
                 </tr>
             </thead>
             <tbody>
-            {% for coach in persons.coaches %}
+            {% assign coachList = coaches | default: persons.coaches %}
+            {% for coach in coachList %}
             {% unless coach.matchCount == 0 %}
                 <tr>
                     <td class="name"><a href="/{{ locale }}/coaches/{{ coach.name.en | slug }}" class="link">{{ coach.name[locale] }}</a></td>
