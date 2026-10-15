@@ -5,15 +5,15 @@
             <div class="event-title">
                 {% if event.150x %}
                 <picture>
-                    <img 
-                      src="{{ event.150x }}" 
+                    <img
+                      src="{{ event.150x }}"
                       srcset="{{ event.300x }} 2x"
                       alt="Logo for {{ event.name[locale] }}">
                   </picture>
                 {% else %}
                 <picture>
-                    <img 
-                      src="https://res.cloudinary.com/itsfish/image/upload/c_scale,f_auto,h_150/v1584424813/CTTA-Almanac/fit_logo.png" 
+                    <img
+                      src="https://res.cloudinary.com/itsfish/image/upload/c_scale,f_auto,h_150/v1584424813/CTTA-Almanac/fit_logo.png"
                       srcset="https://res.cloudinary.com/itsfish/image/upload/c_scale,f_auto,h_300/v1584424813/CTTA-Almanac/fit_logo.png 2x"
                       alt="Logo for Federation of International Touch">
                   </picture>

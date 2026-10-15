@@ -1,22 +1,16 @@
-const sanityClient = require("@sanity/client");
+const sanityClientLib = require("@sanity/client");
+const createClient = sanityClientLib.createClient || sanityClientLib;
+require("dotenv").config();
 
-/**
- * May break in certain build tools
- * if ../studio is not accessible
- */
-const { api } = require('../../studio/sanity.json')
+const projectId = process.env.SANITY_PROJECT_ID || "nxypgfqb";
+const dataset = process.env.SANITY_DATASET || "production";
+const apiVersion = process.env.SANITY_API_VERSION || "2026-01-01";
+const token = process.env.SANITY_API_READ_TOKEN;
 
-/**
- * Set manually. Find configuration in
- * studio/sanity.json or on manage.sanity.io
- */
-
-/*
-const config = {
-  projectId: 'anokeucs',
-  dataset: 'eleventy',
-  useCdn: true
-}
-*/
-
-module.exports = sanityClient({...api, useCdn: true});
+module.exports = createClient({
+  projectId,
+  dataset,
+  apiVersion,
+  useCdn: !token,
+  ...(token ? { token } : {}),
+});

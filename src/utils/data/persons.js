@@ -1,9 +1,9 @@
-const groq = require('groq')
-const client = require('../sanityClient')
-const generatePlayer = require('../generators/generatePlayer')
-const generateCoach = require('../generators/generateCoach')
-const generateReferee = require('../generators/generateReferee')
-const generateSupporter = require('../generators/generateSupporter')
+const groq = require("groq");
+const client = require("../sanityClient");
+const generatePlayer = require("../generators/generatePlayer");
+const generateCoach = require("../generators/generateCoach");
+const generateReferee = require("../generators/generateReferee");
+const generateSupporter = require("../generators/generateSupporter");
 
 function generatePerson(data) {
   return {
@@ -11,17 +11,16 @@ function generatePerson(data) {
     coaches: data.coaches.map(generateCoach),
     referees: data.referees.map(generateReferee),
     supporters: data.supporters.map(generateSupporter),
-  }
+  };
 }
 
-  
-  async function getPersonsData() {
-    const filter = groq``
-    const projection = groq`{
+async function getPersonsData() {
+  const filter = groq``;
+  const projection = groq`{
       'players': *[_type == "person" && !(_id in path("drafts.**")) && player.isPlayer] {
           ...,
           'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
-          "matches": *[_type == "gamesTeam" && references(^._id)]{
+          "matches": *[_type == "gamesTeam" && references(^._id)] | order(gameDate desc) {
             gameDate,
               division->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}},
               event->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}},
@@ -36,7 +35,7 @@ function generatePerson(data) {
         'coaches': *[_type == "person" && !(_id in path("drafts.**")) && coach.isCoach] {
             ...,
             'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
-            "matches": *[_type == "gamesTeam" && references(^._id)]{
+            "matches": *[_type == "gamesTeam" && references(^._id)] | order(gameDate desc) {
               gameDate,
               division->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}},
               event->{
@@ -53,7 +52,7 @@ function generatePerson(data) {
         'referees': *[_type == "person" && !(_id in path("drafts.**")) && referee.isReferee] {
             ...,
             'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
-            "matches": *[_type == "gamesReferee" && references(^._id)]{
+            "matches": *[_type == "gamesReferee" && references(^._id)] | order(gameDate desc) {
               gameDate,
                 "awayTeam": {
                   "score": awayTeam.score,
@@ -78,20 +77,20 @@ function generatePerson(data) {
                 'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)},
             }
           },
-    }`
-    const order = ``
-    const query = [filter, projection, order].join(' ')
-    const docs = await client.fetch(query).catch(err => console.error(err))
-    const prepPersons = generatePerson(docs)
-    //console.log(prepPlayers[9].name.en, prepPlayers[9].matchStats)
-    //console.log(JSON.stringify(prepPlayers[3], null, 2))
-    //console.log(JSON.stringify (prepPersons.coaches[1], null, 2))
-    return prepPersons
-  }
-  
-  module.exports = getPersonsData
+    }`;
+  const order = ``;
+  const query = [filter, projection, order].join(" ");
+  const docs = await client.fetch(query).catch((err) => console.error(err));
+  const prepPersons = generatePerson(docs);
+  //console.log(prepPlayers[9].name.en, prepPlayers[9].matchStats)
+  //console.log(JSON.stringify(prepPlayers[3], null, 2))
+  //console.log(JSON.stringify (prepPersons.coaches[1], null, 2))
+  return prepPersons;
+}
 
-  /* NOTES
+module.exports = getPersonsData;
+
+/* NOTES
 
   "matches": *[_type == "gamesTeam" && references(^._id)]
   --> This gets all the matches of each player. Can be wrapped in a count() function to veriy

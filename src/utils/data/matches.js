@@ -1,18 +1,16 @@
-const groq = require('groq')
-const client = require('../sanityClient')
-const generateMatches = require('../generators/generateMatches')
+const groq = require("groq");
+const client = require("../sanityClient");
+const generateMatches = require("../generators/generateMatches");
 
+function generateMatch(data) {
+  return {
+    ...generateMatches(data),
+  };
+}
 
-function generateMatch (data) {
-
-    return {
-      ...generateMatches(data)
-    }
-  }
-  
-  async function getTeamsData () {
-    const filter = groq`*[_type == "gamesTeam" && !(_id in path("drafts.**"))]`
-    const projection = groq`{
+async function getTeamsData() {
+  const filter = groq`*[_type == "gamesTeam" && !(_id in path("drafts.**"))]`;
+  const projection = groq`{
       ...,
       players[]{
         ...,
@@ -20,12 +18,12 @@ function generateMatch (data) {
       },
       division->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}},
       event->{'name': {'tw': coalesce(name.tw, name.en), 'en': coalesce(name.en, name.en)}}
-    }`
-    const order = ``
-    const query = [filter, projection, order].join(' ')
-    const docs = await client.fetch(query).catch(err => console.error(err))
-    const prepMatches = docs.map(generateMatch)
-    return prepMatches
-  }
-  
-  module.exports = getTeamsData
+    }`;
+  const order = `| order(gameDate desc)`;
+  const query = [filter, projection, order].join(" ");
+  const docs = await client.fetch(query).catch((err) => console.error(err));
+  const prepMatches = docs.map(generateMatch);
+  return prepMatches;
+}
+
+module.exports = getTeamsData;
