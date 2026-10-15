@@ -6,12 +6,8 @@
   "scripts": {
     "build": "npx eleventy",
     "watch": "npx eleventy --watch",
-    "dev": "npm run watch-serve && npx run gulp-css",
     "now-build": "npm run build",
     "debug": "DEBUG=* npx eleventy",
-    "postbuild": "gulp css js",
-    "gulp-watch": "gulp watch",
-    "gulp-css": "gulp css",
     "watch-serve": "npx eleventy --watch --serve --quiet"
   },
   "author": "Fershad Digital Ltd.",
@@ -22,13 +18,7 @@
     "@sanity/image-url": "^1.2.0",
     "country-emoji": "^1.5.6",
     "eleventy-plugin-lazyimages": "^2.1.2",
-    "groq": "^4.8.1",
-    "gulp": "^5.0.1",
-    "gulp-autoprefixer": "^10.0.0",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-rename": "^2.1.0",
-    "gulp-sass": "^6.0.1",
-    "gulp-uglify": "^3.0.2"
+    "groq": "^4.8.1"
   },
   "dependencies": {
     "dotenv": "^17.2.2"
