@@ -5,3 +5,5 @@ src/_includes/css/
 studio/node_modules
 studio/dump
 .DS_Store
+studio/dist
+studio/.sanity
