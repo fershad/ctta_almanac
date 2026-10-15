@@ -4,3 +4,4 @@ src/_includes/css/
 .env
 studio/node_modules
 studio/dump
+.DS_Store
